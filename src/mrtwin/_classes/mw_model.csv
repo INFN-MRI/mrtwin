@@ -1,0 +1,5 @@
+Tissue Type,ID,Label,M0,A,C,T1,T2,Chi
+Background,bck,0,0,0,0,0,0,.4e-6
+Gray Matter,gry,2,.86,857,.376,-1,100,-9e-6
+White Matter,wht,3,.77,583,.382,-1,80,-9e-6
+

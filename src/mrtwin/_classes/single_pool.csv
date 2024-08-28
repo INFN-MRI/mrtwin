@@ -1,0 +1,13 @@
+Tissue Type,ID,Label,M0,A,C,T1,T2,Chi
+Background,bck,0,0,0,0,0,0,.4e-6
+CSF,csf,1,1,-1,-1,4200,1990,-9e-6
+Gray Matter,gry,2,.86,857,.376,-1,100,-9e-6
+White Matter,wht,3,.77,583,.382,-1,80,-9e-6
+Fat,fat,4,1,324,.137,-1,70,-7e-5
+Muscle,mus,5,1,-1,-1,1050,50,-9.04e-6
+Muscle/Skin,m-s,6,1,-1,-1,1050,50,-9.04e-6
+Skull,skl,7,1,-1,-1,350,15,-8.44e-6
+Vessels,ves,8,1,1350,.34,-1,200,-9e-6
+Around Fat,fat2,9,1,324,.137,-1,70,-7e-5
+Dura Matter,dura,10,1,-1,-1,700,150,-9e-6
+Bone Marrow,mrw,11,1,533,.088,-1,50,-8.85e-6
