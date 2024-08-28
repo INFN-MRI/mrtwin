@@ -1,0 +1,4 @@
+Tissue Type,ID,Label,MVF,T1w (ms),T2w (ms),k (Hz)
+Background,bck,0,0,0,0,0,0,0
+Gray Matter,gry,2,.03,1331,80,36.75
+White Matter,wht,3,.1,832,80,36.75
