@@ -5,6 +5,7 @@ __all__ = "ssl_verification"
 import requests
 from contextlib import contextmanager
 
+
 @contextmanager
 def ssl_verification(verify=True):  # noqa
     # Default behaviour (do not disable)

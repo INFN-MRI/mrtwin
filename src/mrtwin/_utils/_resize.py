@@ -15,7 +15,7 @@ def resize(input, oshape):
 
     Parameters
     ----------
-    input : np.ndarray 
+    input : np.ndarray
         Input array of shape ``(..., ishape)``.
     oshape : Sequence
         Output shape.
