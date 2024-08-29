@@ -50,6 +50,7 @@ def set_prescription(
     # default output shape
     if output_shape is None:
         output_shape = orig_fov / output_res
+        output_shape = np.ceil(output_shape).astype(int)
     
     # get output fov
     output_fov = output_shape * output_res

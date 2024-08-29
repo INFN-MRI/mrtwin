@@ -1,4 +1,4 @@
-"""Wrapper around phantominator to extract MR tissue segmentation."""
+"""Wrapper around Phantominator to extract MR tissue segmentation."""
 
 __all__ = []
 

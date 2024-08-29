@@ -19,7 +19,6 @@ with warnings.catch_warnings():
     warnings.simplefilter("ignore")
     import brainweb_dl
 
-from contextlib import contextmanager
 from pathlib import Path
 
 from numpy.typing import DTypeLike
@@ -37,30 +36,7 @@ from brainweb_dl._brainweb import (
 
 from .. import _prescription
 
-@contextmanager
-def ssl_verification(verify=True):  # noqa
-    # Default behaviour (do not disable)
-    if verify:
-        yield
-
-    # Store the original `requests.Session.send` method
-    original_send = requests.Session.send
-
-    # Define a new `send` method that disables SSL verification
-    def send_with_ssl_disabled(self, *args, **kwargs):
-        kwargs["verify"] = False
-        return original_send(self, *args, **kwargs)
-
-    # Replace the original `send` method with the new one
-    requests.Session.send = send_with_ssl_disabled
-
-    try:
-        # Execute the code within the context
-        yield
-    finally:
-        # Restore the original `send` method
-        requests.Session.send = original_send
-
+from .._download import ssl_verification
 
 def _request_get_brainweb(
     download_command: str,
@@ -243,12 +219,12 @@ def get_brainweb(
         # normalize probability
         data = data / data.sum(axis=0)
         data = np.nan_to_num(data, posinf=0.0, neginf=0.0)
-        return data
+        return data.astype(np.float32)
     elif output_res is None:
         output_res = 2 * orig_res # 1 mm iso
         
     # set prescription
-    data = _prescription.set_prescription(data, orig_res, data.shape[-ndim:], output_res)
+    data = _prescription.set_prescription(data, orig_res, data.shape[-ndim:], output_res, shape)
     
     # normalize probability
     data = data / data.sum(axis=0)
