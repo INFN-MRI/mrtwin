@@ -203,7 +203,15 @@ def get_brainweb_segmentation(
     orig_res = 0.5 * np.ones(ndim)
 
     # get data
-    with ssl_verification(verify=verify):
+    if verify is False:    
+        with ssl_verification(verify=verify):
+            data = brainweb_dl.get_mri(
+                subject,
+                "fuzzy",
+                brainweb_dir=brainweb_dir,
+                force=force,
+            )
+    else:
         data = brainweb_dl.get_mri(
             subject,
             "fuzzy",

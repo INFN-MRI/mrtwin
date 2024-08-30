@@ -1,5 +1,5 @@
-Tissue Type,ID,Label,MWF,T1w (ms),T2w (ms),T1m (ms),T2m (ms),k (Hz),chemshift (Hz)
-Background,bck,0,0,0,0,0,0,0
+Tissue Type,ID,Label,MWF,T1w,T2w,T1m,T2m,k,chemshift
+Background,bck,0,0,0,0,0,0,0,0
 Gray Matter,gry,2,.05,1331,80,500,20,10.75,5
 White Matter,wht,3,.25,832,80,400,20,10.75,15
 

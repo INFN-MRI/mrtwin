@@ -1,6 +1,6 @@
 """Tissue model for different experiments."""
 
-__all__ = ["tissue_map"]
+__all__ = ["tissue_map", "get_t1", "get_t2star"]
 
 import os
 import sys
@@ -63,9 +63,9 @@ def tissue_map(path_or_dict: str | os.PathLike | dict) -> list[dict]:
         if path_or_dict == "single-pool":
             tissue_dict = _load_tissue_map(TissueMap.single)
         if path_or_dict == "mt-model":
-            tissue_dict = _load_tissue_map(TissueMap.mw)
-        if path_or_dict == "mw-model":
             tissue_dict = _load_tissue_map(TissueMap.mt)
+        if path_or_dict == "mw-model":
+            tissue_dict = _load_tissue_map(TissueMap.mw)
         if path_or_dict == "mwmt-model":
             tissue_dict = _load_tissue_map(TissueMap.mwmt)
     else:
@@ -74,13 +74,13 @@ def tissue_map(path_or_dict: str | os.PathLike | dict) -> list[dict]:
         else:
             tissue_dict = _load_tissue_map(path_or_dict)
 
-    # check validity of dictionary
-    assert (
-        "Tissue Type" in tissue_dict and "ID" in tissue_dict and "Label" in tissue_dict
-    ), KeyError("Tissue Type, ID and Label fields must be defined.")
-
     # iterate and cast string to float / int
     for item in tissue_dict:
+        # check validity of dictionary
+        assert (
+            "Tissue Type" in item and "ID" in item and "Label" in item
+        ), KeyError("Tissue Type, ID and Label fields must be defined.")
+        
         item["ID"] = int(item["Label"])
         for key in item.keys() - {"Tissue Type", "ID", "Label"}:
             item[key] = float(item[key])
@@ -89,8 +89,56 @@ def tissue_map(path_or_dict: str | os.PathLike | dict) -> list[dict]:
 
     return tissue_dict
 
+def get_t1(tissue: dict, B0: float, B0start: float) -> float:
+    """
+    Calculate / extrapolate T1 for a given tissue at a specific field strength.
 
-def get_t1(A: float, C: float, B0: float) -> float:
+    Parameters
+    ----------
+    tissue : dict
+        Dictionary containing either tabulated T1 
+        or T1 model parameters (A, C).
+    B0 : float
+        Static field strength in [T].
+    B0start, float
+        Static field strength corresponding to tabulated T1.
+
+    Returns
+    -------
+    float
+        T1 value in [ms].
+
+    """
+    if np.isnan(tissue["T1"]):
+        return model_t1(tissue["A"], tissue["C"], B0)
+    return extrapolate_t1(tissue["T1"], B0start, B0)
+
+def get_t2star(tissue: dict, B0: float, B0start: float) -> float:
+    """
+    Calculate / extrapolate T2* for a given tissue at a specific field strength.
+
+    Parameters
+    ----------
+    tissue : dict
+        Dictionary containing either tabulated T2* 
+        or T1 model parameters (T2, Chi).
+    B0 : float
+        Static field strength in [T].
+    B0start, float
+        Static field strength corresponding to tabulated T2*.
+
+    Returns
+    -------
+    float
+        T2 value in [ms].
+
+    """
+    if "Chi" in tissue:
+        return model_t2star(tissue["T2"], tissue["Chi"], B0)
+    return extrapolate_t2star(tissue["T2"], tissue["T2STAR"], B0start, B0)
+        
+    
+def model_t1(A: float, C: float, B0: float) -> float:
     """
     Calculate T1 for a given tissue at a specific field strength.
 
@@ -112,7 +160,7 @@ def get_t1(A: float, C: float, B0: float) -> float:
     return A * (B0**C)
 
 
-def get_t2star(T2: float, Chi: float, B0: float) -> float:
+def model_t2star(T2: float, Chi: float, B0: float) -> float:
     """
     Calculate T2* for a given tissue at a specific field strength.
 
@@ -132,7 +180,10 @@ def get_t2star(T2: float, Chi: float, B0: float) -> float:
 
     """
     gamma0 = 267.52219  # 10^6 rad⋅s−1⋅T⋅−1
-    return 1 / (1 / T2 + gamma0 * np.abs(B0 * Chi))
+    if T2 != 0:
+        return 1 / (1 / T2 + gamma0 * np.abs(B0 * Chi))
+    else:
+        return 0.0
 
 
 def extrapolate_t1(T1start: float, B0start: float, B0end: float) -> float:

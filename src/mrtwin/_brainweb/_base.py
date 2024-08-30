@@ -5,6 +5,10 @@ __all__ = ["BrainwebPhantom"]
 import os
 import numpy as np
 
+from typing import Sequence
+
+from brainweb_dl._brainweb import BIG_RES_SHAPE, BIG_RES_MM
+
 from ..build import PhantomMixin
 from .._utils import CacheDirType, get_mrtwin_dir
 
@@ -17,14 +21,19 @@ class BrainwebPhantom(PhantomMixin):
             self,
             ndim: int,
             subject: int,
-            shape: int | tuple[int, int] | tuple[int, int, int] = (200, 200, 200),
-            output_res: float | tuple[float, float] | tuple[float, float, float] = (1., 1., 1.),
+            shape: int | Sequence[int] | None = None,
+            output_res: float | Sequence[float] | None = None,
             cache: bool = True,
             cache_dir: CacheDirType = None,
             brainweb_dir: CacheDirType = None,
             force: bool = False,
             verify: bool = True,
             ):
+        # keep dim
+        self._ndim = ndim
+        
+        # default fov, resolution
+        shape, output_res = self._default_prescription(ndim, shape, output_res)
         
         # get filename
         _fname = self.get_filename(ndim, subject, shape, output_res)
@@ -47,6 +56,59 @@ class BrainwebPhantom(PhantomMixin):
         if cache:
             self.cache(file_path, self.segmentation)
             
+    def _default_prescription(
+            self,
+            ndim: int, 
+            output_shape: int | Sequence[int] | None, 
+            output_res: float | Sequence[float] | None,
+            ):
+        # original shape and resolution
+        orig_shape = np.asarray(BIG_RES_SHAPE)[-ndim:]
+        orig_res = np.asarray(BIG_RES_MM)[-ndim:]
+        orig_fov = orig_shape * orig_res
+        
+        # default shape
+        if output_shape is None:
+            output_shape = ndim * [200]
+        if output_shape is not None and np.isscalar(output_shape):
+            output_shape = ndim * [output_shape]
+        if output_shape is not None:
+            assert len(output_shape) == ndim, ValueError(
+                "If shape is not None, it must be either a scalar or a ndim-length sequence."
+            )
+        output_shape = np.asarray(output_shape)
+        
+        # default resolution
+        if output_res is not None and np.isscalar(output_res):
+            output_res = ndim * [output_res] 
+        if output_res is not None:
+            assert len(output_res) == ndim, ValueError(
+                "If output_res is not None, it must be either or a scalar a ndim-length sequence."
+            )
+        if output_res is None:
+            output_res = [max(orig_fov) / max(output_shape)] * ndim        
+        output_res = np.asarray(output_res)
+        
+        return output_shape, output_res
+        
+    def __repr__(self): # noqa
+        if self.segmentation is None:
+            ptype = "Dense"
+        elif len(self.segmentation.shape) == self._ndim:
+            ptype = "Crisp"
+        else:
+            ptype = "Fuzzy"
+        msg = f"{ptype} Brainweb phantom with following properties:\n"
+        msg += f"Number of spatial dimensions: {self._ndim}\n"
+        msg += f"Tissue properties: {self._properties.keys()}\n"
+        if self.segmentation is not None:
+            _shape = self.shape[-self._ndim:]
+        else:
+            _shape = list(self._properties.values())[0].shape[-self._ndim:]
+        msg += f"Matrix size: {_shape}\n"
+        if self.segmentation is not None and len(self.segmentation.shape) != self._ndim:
+            msg += f"Number of tissue classes: {self.segmentation.shape[0]}\n"
+        return msg
     
     def get_filename(
             self,
@@ -76,25 +138,15 @@ class BrainwebPhantom(PhantomMixin):
             Filename for caching.
 
         """
-        assert ndim == 2 or ndim == 3, ValueError(
-            f"Number of spatial dimensions (={ndim}) must be either 2 or 3."
-        )
-
-        # default params
-        if shape is not None and np.isscalar(shape):
-            shape = shape * np.ones(ndim, dtype=int)
-        if shape is not None:
-            assert len(shape) == ndim, ValueError(
-                "If shape is not None, it must be either a scalar or a ndim-length sequence."
-            )
-        if resolution is not None and np.isscalar(resolution):
-            resolution = resolution * np.ones(ndim, dtype=int)
-        if resolution is not None:
-            assert len(resolution) == ndim, ValueError(
-                "If resolution is not None, it must be either or a scalar a ndim-length sequence."
-            )
-        _fov = np.ceil(np.asarray(shape[-ndim:]) * np.asarray(resolution[-ndim:])).astype(int).tolist()
-        return f"{self.__class__.__name__.lower()}{subject:02d}_{_fov}fov_{shape}mtx.npy"
+        _fov = np.ceil(shape * resolution).astype(int).tolist()
+        
+        fov_str = [str(ri) for ri in _fov]
+        shape_str = [str(di) for di in shape.tolist()]
+        
+        fov_str = "x".join(tuple(fov_str))
+        shape_str = "x".join(tuple(shape_str))    
+        
+        return f"{self.__class__.__name__.lower()}{subject:02d}_{fov_str}fov_{shape_str}mtx.npy"
     
     def get_segmentation(
             self,
@@ -168,8 +220,10 @@ class BrainwebPhantom(PhantomMixin):
                 )
                         
         return segmentation, file_path
-
-
-
     
+    def __array__(self): # noqa
+        # This method tells NumPy how to convert the object to an array
+        return self.segmentation
+        
+
     

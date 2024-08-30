@@ -1,6 +1,6 @@
 """Utils for file download."""
 
-__all__ = "ssl_verification"
+__all__ = ["ssl_verification"]
 
 import requests
 from contextlib import contextmanager
