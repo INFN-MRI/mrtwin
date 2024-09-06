@@ -5,7 +5,7 @@ __all__ = ["get_osf_maps"]
 import os
 
 from pathlib import Path
-from typing import Union
+from typing import Sequence
 
 import numpy as np
 import nibabel as nib
@@ -22,6 +22,7 @@ DATASET_ID = "qkbca"
 # +fmt: off
 SUB_ID = [1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 14, 15, 17, 19, 22, 23, 25, 27, 28]
 # +fmt: on
+
 
 # Directory where data will be stored
 def get_osf_dir(osf_dir: CacheDirType = None) -> Path:
@@ -60,8 +61,8 @@ def get_osf_dir(osf_dir: CacheDirType = None) -> Path:
 def get_osf_maps(
     ndim: int,
     subject: int,
-    shape: int | tuple[int, int] | tuple[int, int, int] | None = None,
-    output_res: float | tuple[float, float] | tuple[float, float, float] | None = None,
+    shape: int | Sequence[int] | None = None,
+    output_res: float | Sequence[float] | None = None,
     osf_dir: CacheDirType = None,
     force: bool = False,
     verify: bool = True,
@@ -80,10 +81,10 @@ def get_osf_maps(
         (central axial slice).
     subject : int
         Subject id to download.
-    shape: int | tuple[int, int] | tuple[int, int, int] | None, optional
+    shape: int | Sequence[int] | None, optional
         Shape of the output data, the data will be interpolated to the given shape.
         If int, assume isotropic matrix. The default is None (original shape).
-    output_res: float | tuple[float, float] | tuple[float, float, float] | None, optional
+    output_res: float | Sequence[float] | None, optional
         Resolution of the output data, the data will be rescale to the given resolution.
         If scalar, assume isotropic resolution. The default is None (keep original 0.4mm iso).
     osf_dir : CacheDirType, optional
@@ -167,10 +168,27 @@ def get_osf_maps(
     elif output_res is None:
         output_res = orig_res  # 0.4 mm iso
 
+    # Get tissue mask
+    mask = data[0]
+    mask = data[0] / np.nanmax(data[0])
+    mask = mask > 0.1
+
+    # Get scaling
+    scale = [np.nanmedian(data[n][mask]) for n in range(data.shape[0])]
+
     # Set prescription
     data = _prescription.set_prescription(
         data, orig_res, data.shape[-ndim:], output_res, shape
     )
+
+    # Get tissue mask
+    mask = data[0]
+    mask = data[0] / np.nanmax(data[0])
+    mask = mask > 0.1
+
+    # Rescale
+    for n in range(data.shape[0]):
+        data[n] = data[n] / np.nanmedian(data[n][mask]) * scale[n]
 
     # Clean-up
     data = np.nan_to_num(data, posinf=0.0, neginf=0.0)

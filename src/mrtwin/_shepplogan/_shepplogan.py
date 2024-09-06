@@ -1,48 +1,37 @@
-"""Single-pool BrainWeb phantom builder class."""
+"""Single-pool Shepp-Logan phantom builder class."""
 
-__all__ = ["FuzzyBrainwebPhantom", "CrispBrainwebPhantom", "NumericBrainwebPhantom"]
+__all__ = ["CrispSheppLoganPhantom", "NumericSheppLoganPhantom"]
 
-import os
 from typing import Sequence
 
 import numpy as np
 
 from .. import _classes
 
-from ..build import FuzzyPhantomMixin, CrispPhantomMixin, _fuzzy_to_crisp
+from ..build import CrispPhantomMixin
 from .._utils import CacheDirType
 
-from ._base import BrainwebPhantom
+from ._base import SheppLoganPhantom
 
 
-class FuzzyBrainwebPhantom(BrainwebPhantom, FuzzyPhantomMixin):
-    """Fuzzy BrainWeb phantom builder."""
+class CrispSheppLoganPhantom(SheppLoganPhantom, CrispPhantomMixin):
+    """Fuzzy Shepp-Logan phantom builder."""
 
     def __init__(
         self,
         ndim: int,
-        subject: int,
         shape: int | Sequence[int] = None,
-        output_res: float | Sequence[float] = None,
         B0: float = 1.5,
         cache: bool = True,
         cache_dir: CacheDirType = None,
-        brainweb_dir: CacheDirType = None,
-        force: bool = False,
-        verify: bool = True,
     ):
 
         # initialize segmentation
         super().__init__(
             ndim,
-            subject,
             shape,
-            output_res,
             cache,
             cache_dir,
-            brainweb_dir,
-            force,
-            verify,
         )
 
         # initialize model
@@ -101,55 +90,24 @@ class FuzzyBrainwebPhantom(BrainwebPhantom, FuzzyPhantomMixin):
         return self._properties
 
 
-class CrispBrainwebPhantom(FuzzyBrainwebPhantom, CrispPhantomMixin):
-    """Crisp BrainWeb phantom builder."""
-
-    def cache(self, file_path: str, array: np.ndarray):
-        """
-        Cache an array for fast retrieval.
-
-        Parameters
-        ----------
-        file_path : str
-            Path on disk to cached array.
-        array : np.ndarray
-            Array to be cached.
-
-        """
-        if os.path.exists(file_path) is False:
-            array = _fuzzy_to_crisp(array)
-            np.save(file_path, array)
-            self.as_crisp(copy=False)
-
-
-class NumericBrainwebPhantom(CrispBrainwebPhantom):
-    """Numeric BrainWeb phantom builder."""
+class NumericSheppLoganPhantom(CrispSheppLoganPhantom):
+    """Numeric Shepp-Logan phantom builder."""
 
     def __init__(
         self,
         ndim: int,
-        subject: int,
         shape: int | Sequence[int] = None,
-        output_res: float | Sequence[float] = None,
         B0: float = 1.5,
         cache: bool = True,
         cache_dir: CacheDirType = None,
-        brainweb_dir: CacheDirType = None,
-        force: bool = False,
-        verify: bool = True,
     ):
 
         super().__init__(
             ndim,
-            subject,
             shape,
-            output_res,
             B0,
             cache,
             cache_dir,
-            brainweb_dir,
-            force,
-            verify,
         )
 
         self.as_numeric(copy=False)

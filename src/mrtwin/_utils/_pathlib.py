@@ -8,6 +8,7 @@ from pathlib import Path
 
 from ._typing import CacheDirType
 
+
 # Directory where data will be stored
 def get_mrtwin_dir(cache_dir: CacheDirType = None) -> Path:
     """Get the MRTWIN directory.

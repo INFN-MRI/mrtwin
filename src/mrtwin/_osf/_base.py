@@ -1,22 +1,23 @@
-"""Base BrainWeb phantom builder class."""
+"""Base Open Science CBS phantom builder class."""
 
-__all__ = ["BrainwebPhantom"]
+__all__ = ["OSFPhantom"]
 
 import os
 import numpy as np
 
 from typing import Sequence
 
-from brainweb_dl._brainweb import BIG_RES_SHAPE, BIG_RES_MM
-
 from ..build import PhantomMixin
 from .._utils import CacheDirType, get_mrtwin_dir
 
-from ._segmentation import get_brainweb_segmentation
+from ._maps import get_osf_maps
+
+BIG_RES_SHAPE = (454, 544, 454)
+BIG_RES_MM = (0.5, 0.5, 0.5)
 
 
-class BrainwebPhantom(PhantomMixin):
-    """Base BrainWeb phantom builder."""
+class OSFPhantom(PhantomMixin):
+    """Base OSF phantom builder."""
 
     def __init__(
         self,
@@ -26,7 +27,7 @@ class BrainwebPhantom(PhantomMixin):
         output_res: float | Sequence[float] | None = None,
         cache: bool = True,
         cache_dir: CacheDirType = None,
-        brainweb_dir: CacheDirType = None,
+        osf_dir: CacheDirType = None,
         force: bool = False,
         verify: bool = True,
     ):
@@ -39,8 +40,8 @@ class BrainwebPhantom(PhantomMixin):
         # get filename
         _fname = self.get_filename(ndim, subject, shape, output_res)
 
-        # try to load segmentation
-        self.segmentation, file_path = self.get_segmentation(
+        # try to load parameter maps
+        self.maps, file_path = self.get_maps(
             _fname,
             ndim,
             subject,
@@ -48,14 +49,14 @@ class BrainwebPhantom(PhantomMixin):
             output_res,
             cache,
             cache_dir,
-            brainweb_dir,
+            osf_dir,
             force,
             verify,
         )
 
         # cache the result
         if cache:
-            self.cache(file_path, self.segmentation)
+            self.cache(file_path, self.maps)
 
     def _default_prescription(
         self,
@@ -93,22 +94,13 @@ class BrainwebPhantom(PhantomMixin):
         return output_shape, output_res
 
     def __repr__(self):  # noqa
-        if self.segmentation is None:
-            ptype = "Dense"
-        elif len(self.segmentation.shape) == self._ndim:
-            ptype = "Crisp"
-        else:
-            ptype = "Fuzzy"
-        msg = f"{ptype} Brainweb phantom with following properties:\n"
+        ptype = "Dense"
+        msg = f"{ptype} OSF phantom with following properties:\n"
         msg += f"Number of spatial dimensions: {self._ndim}\n"
         msg += f"Tissue properties: {self._properties.keys()}\n"
-        if self.segmentation is not None:
-            _shape = self.shape[-self._ndim :]
-        else:
-            _shape = list(self._properties.values())[0].shape[-self._ndim :]
+        _shape = list(self._properties.values())[0].shape[-self._ndim :]
         msg += f"Matrix size: {_shape}\n"
-        if self.segmentation is not None and len(self.segmentation.shape) != self._ndim:
-            msg += f"Number of tissue classes: {self.segmentation.shape[0]}\n"
+
         return msg
 
     def get_filename(
@@ -149,7 +141,7 @@ class BrainwebPhantom(PhantomMixin):
 
         return f"{self.__class__.__name__.lower()}{subject:02d}_{fov_str}fov_{shape_str}mtx.npy"
 
-    def get_segmentation(
+    def get_maps(
         self,
         fname: str,
         ndim: int,
@@ -158,12 +150,12 @@ class BrainwebPhantom(PhantomMixin):
         output_res: float | Sequence[float],
         cache: bool,
         cache_dir: CacheDirType,
-        brainweb_dir: CacheDirType,
+        osf_dir: CacheDirType,
         force: bool,
         verify: bool,
     ):
         """
-        Get fuzzy BrainWeb tissue segmentation.
+        Get OSF parameter maps.
 
         Parameters
         ----------
@@ -183,9 +175,9 @@ class BrainwebPhantom(PhantomMixin):
         cache : bool
             If True, cache the result.
         cache_dir : CacheDirType
-            Directory for segmentation caching.
-        brainweb_dir : CacheDirType
-            Brainweb_directory to download the data.
+            Directory for maps caching.
+        osf_dir : CacheDirType
+            osf_directory to download the data.
         force : bool
             Force download even if the file already exists.
         verify : bool
@@ -195,9 +187,9 @@ class BrainwebPhantom(PhantomMixin):
         Returns
         -------
         np.ndarray.
-            Brainweb segmentation.
+            OSF parameter maps.
         file_path : str
-            Path on disk to generated segmentation for caching.
+            Path on disk to generated maps for caching.
 
         """
         # get base directory
@@ -210,12 +202,8 @@ class BrainwebPhantom(PhantomMixin):
         if os.path.exists(file_path):
             return np.load(file_path), file_path
         else:
-            segmentation = get_brainweb_segmentation(
-                ndim, subject, shape, output_res, brainweb_dir, force, verify
+            maps = get_osf_maps(
+                ndim, subject, shape, output_res, osf_dir, force, verify
             )
 
-        return segmentation, file_path
-
-    def __array__(self):  # noqa
-        # This method tells NumPy how to convert the object to an array
-        return self.segmentation
+        return maps, file_path

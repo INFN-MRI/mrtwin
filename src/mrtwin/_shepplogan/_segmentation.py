@@ -1,10 +1,10 @@
 """Wrapper around Phantominator to extract MR tissue segmentation."""
 
-__all__ = []
+__all__ = ["get_shepp_logan"]
 
 import importlib
 
-from typing import Dict
+from typing import Dict, Sequence
 
 import numpy as np
 import numpy.typing as npt
@@ -128,10 +128,7 @@ def mr_ellipsoid_parameters() -> npt.ArrayLike:
 mr_shepp_logan.mr_ellipsoid_parameters = mr_ellipsoid_parameters
 
 
-def get_shepp_logan(
-    ndim: int,
-    shape: int | tuple[int, int] | tuple[int, int, int],
-):
+def get_shepp_logan(ndim: int, shape: int | Sequence[int]):
     """
     Get crisp Shepp-Logan tissue segmentation.
 
@@ -140,7 +137,7 @@ def get_shepp_logan(
     ndim : int
         Number of spatial dimensions. If ndim == 2, create a single slice
         2D phantom.
-    shape: int | tuple[int, int] | tuple[int, int, int]
+    shape: int | Sequence[int]
         Shape of the output data, the data will be interpolated to the given shape.
         If int, assume isotropic matrix.
 
@@ -180,4 +177,4 @@ def get_shepp_logan(
     else:
         data = data.transpose(-1, 0, 1)
 
-    return np.ascontiguousarray(data)  # .astype(int)
+    return np.ascontiguousarray(data).astype(int)

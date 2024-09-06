@@ -23,18 +23,21 @@ Utilities to handle i.e., cache folder position.
 __all__ = []
 
 from . import _download
+from . import _fft
 from . import _filter
 from . import _pathlib
 from . import _resize
 from . import _typing
 
-from ._download import * # noqa
+from ._download import *  # noqa
+from ._fft import *  # noqa
 from ._filter import *  # noqa
-from ._pathlib import * # noqa
+from ._pathlib import *  # noqa
 from ._resize import *  # noqa
-from ._typing import * # noqa
+from ._typing import *  # noqa
 
 __all__.extend(_download.__all__)
+__all__.extend(_fft.__all__)
 __all__.extend(_filter.__all__)
 __all__.extend(_pathlib.__all__)
 __all__.extend(_resize.__all__)

@@ -4,6 +4,7 @@ __all__ = ["resize", "resample"]
 
 import numpy as np
 
+from ._fft import fftc, ifftc
 from ._filter import fermi
 
 
@@ -125,7 +126,7 @@ def resample(input, oshape, filt=True, polysmooth=False):
     isreal = np.isreal(input).all()
 
     # take fourier transform along last ndim axes
-    freq = _fftc(input, axes)
+    freq = fftc(input, axes)
 
     # get initial and final shapes
     ishape1, oshape1 = _expand_shapes(input.shape, oshape)
@@ -144,10 +145,11 @@ def resample(input, oshape, filt=True, polysmooth=False):
 
     # if required, apply filtering
     if filt is not None:
-        freq *= filt.to(freq.device)
+        print("filtering")
+        freq = freq * filt  # .to(freq.device)
 
     # transform back
-    output = _ifftc(freq, axes)
+    output = ifftc(freq, axes)
 
     # smooth
     if polysmooth:
@@ -173,15 +175,3 @@ def _expand_shapes(*shapes):
     shapes_exp = [list(shapes_exp[: -len(shape)]) + shape for shape in shapes]
 
     return tuple(shapes_exp)
-
-
-def _fftc(x, ax):
-    return np.fft.fftshift(
-        np.fft.fftn(np.fft.ifftshift(x, axes=ax), axes=ax, norm="ortho"), axes=ax
-    )
-
-
-def _ifftc(x, ax):
-    return np.fft.fftshift(
-        np.fft.ifftn(np.fft.ifftshift(x, axes=ax), axes=ax, norm="ortho"), axes=ax
-    )

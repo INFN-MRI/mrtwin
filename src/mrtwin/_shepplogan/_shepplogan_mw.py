@@ -1,24 +1,16 @@
-"""Two-pool (I/E W + MW) BrainWeb phantom builder class."""
+"""Two-pool (I/E W + MW) Shepp-Logan phantom builder class."""
 
-__all__ = [
-    "FuzzyMWBrainwebPhantom",
-    "CrispMWBrainwebPhantom",
-    "NumericMWBrainwebPhantom",
-]
+__all__ = ["CrispMWSheppLoganPhantom", "NumericMWSheppLoganPhantom"]
 
 import numpy as np
 
 from .. import _classes
 
-from ._brainweb import (
-    FuzzyBrainwebPhantom,
-    CrispBrainwebPhantom,
-    NumericBrainwebPhantom,
-)
+from ._shepplogan import CrispSheppLoganPhantom, NumericSheppLoganPhantom
 
 
-class FuzzyMWBrainwebPhantom(FuzzyBrainwebPhantom):
-    """Fuzzy MW BrainWeb phantom builder."""
+class CrispMWSheppLoganPhantom(CrispSheppLoganPhantom):
+    """Crisp MW Shepp-Logan phantom builder."""
 
     def get_model(self, B0: float):
         """Initialize model.
@@ -94,13 +86,9 @@ class FuzzyMWBrainwebPhantom(FuzzyBrainwebPhantom):
         return _properties
 
 
-class CrispMWBrainwebPhantom(FuzzyMWBrainwebPhantom, CrispBrainwebPhantom):  # noqa
-    """Crisp MW BrainWeb phantom builder."""
-
-    pass
-
-
-class NumericMWBrainwebPhantom(FuzzyMWBrainwebPhantom, NumericBrainwebPhantom):  # noqa
-    """Numeric MW BrainWeb phantom builder."""
+class NumericMWSheppLoganPhantom(
+    CrispMWSheppLoganPhantom, NumericSheppLoganPhantom
+):  # noqa
+    """Numeric MW Shepp-Logan phantom builder."""
 
     pass

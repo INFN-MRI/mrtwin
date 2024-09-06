@@ -77,10 +77,10 @@ def tissue_map(path_or_dict: str | os.PathLike | dict) -> list[dict]:
     # iterate and cast string to float / int
     for item in tissue_dict:
         # check validity of dictionary
-        assert (
-            "Tissue Type" in item and "ID" in item and "Label" in item
-        ), KeyError("Tissue Type, ID and Label fields must be defined.")
-        
+        assert "Tissue Type" in item and "ID" in item and "Label" in item, KeyError(
+            "Tissue Type, ID and Label fields must be defined."
+        )
+
         item["ID"] = int(item["Label"])
         for key in item.keys() - {"Tissue Type", "ID", "Label"}:
             item[key] = float(item[key])
@@ -89,6 +89,7 @@ def tissue_map(path_or_dict: str | os.PathLike | dict) -> list[dict]:
 
     return tissue_dict
 
+
 def get_t1(tissue: dict, B0: float, B0start: float) -> float:
     """
     Calculate / extrapolate T1 for a given tissue at a specific field strength.
@@ -96,7 +97,7 @@ def get_t1(tissue: dict, B0: float, B0start: float) -> float:
     Parameters
     ----------
     tissue : dict
-        Dictionary containing either tabulated T1 
+        Dictionary containing either tabulated T1
         or T1 model parameters (A, C).
     B0 : float
         Static field strength in [T].
@@ -113,6 +114,7 @@ def get_t1(tissue: dict, B0: float, B0start: float) -> float:
         return model_t1(tissue["A"], tissue["C"], B0)
     return extrapolate_t1(tissue["T1"], B0start, B0)
 
+
 def get_t2star(tissue: dict, B0: float, B0start: float) -> float:
     """
     Calculate / extrapolate T2* for a given tissue at a specific field strength.
@@ -120,7 +122,7 @@ def get_t2star(tissue: dict, B0: float, B0start: float) -> float:
     Parameters
     ----------
     tissue : dict
-        Dictionary containing either tabulated T2* 
+        Dictionary containing either tabulated T2*
         or T1 model parameters (T2, Chi).
     B0 : float
         Static field strength in [T].
@@ -136,8 +138,8 @@ def get_t2star(tissue: dict, B0: float, B0start: float) -> float:
     if "Chi" in tissue:
         return model_t2star(tissue["T2"], tissue["Chi"], B0)
     return extrapolate_t2star(tissue["T2"], tissue["T2STAR"], B0start, B0)
-        
-    
+
+
 def model_t1(A: float, C: float, B0: float) -> float:
     """
     Calculate T1 for a given tissue at a specific field strength.
@@ -205,6 +207,8 @@ def extrapolate_t1(T1start: float, B0start: float, B0end: float) -> float:
         Final T1 in [ms].
 
     """
+    if B0start == B0end:
+        return T1start
     scale = (B0end / B0start) ** 0.5
     return scale * T1start
 
@@ -232,7 +236,14 @@ def extrapolate_t2star(
         Final T2* in [ms].
 
     """
+    if B0start == B0end:
+        return T2s_start
     scale = B0end / B0start
-    R2p_start = 1 / T2s_start - 1 / T2
+    R2 = 1 / (T2 + 1e-9)
+    R2s_start = 1 / (T2s_start + 1e-9)
+    R2p_start = R2s_start - R2
+    R2p_start = np.clip(R2p_start, a_min=0.0, a_max=None)
     R2p_end = scale * R2p_start
-    return 1 / (R2p_end + 1 / T2)
+    R2s_end = R2 + R2p_end
+    T2s_end = 1 / (R2s_end + 1e-9)
+    return T2s_end

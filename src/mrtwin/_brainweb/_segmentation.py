@@ -14,6 +14,8 @@ import os
 import requests
 import warnings
 
+from typing import Sequence
+
 import numpy as np
 
 with warnings.catch_warnings():
@@ -138,8 +140,8 @@ logger = logging.getLogger("brainweb_dl")
 def get_brainweb_segmentation(
     ndim: int,
     subject: int,
-    shape: int | tuple[int, int] | tuple[int, int, int] | None = None,
-    output_res: float | tuple[float, float] | tuple[float, float, float] | None = None,
+    shape: int | Sequence[int] | None = None,
+    output_res: float | Sequence[float] | None = None,
     brainweb_dir: CacheDirType = None,
     force: bool = False,
     verify: bool = True,
@@ -154,10 +156,10 @@ def get_brainweb_segmentation(
         (central axial slice).
     subject : int
         Subject id to download.
-    shape: int | tuple[int, int] | tuple[int, int, int] | None, optional
+    shape: int | Sequence[int] | None, optional
         Shape of the output data, the data will be interpolated to the given shape.
         If int, assume isotropic matrix. The default is None (original shape).
-    output_res: float | tuple[float, float] | tuple[float, float, float] | None, optional
+    output_res: float | Sequence[float] | None, optional
         Resolution of the output data, the data will be rescale to the given resolution.
         If scalar, assume isotropic resolution. The default is None (1mm iso).
     brainweb_dir : CacheDirType, optional
@@ -203,7 +205,7 @@ def get_brainweb_segmentation(
     orig_res = 0.5 * np.ones(ndim)
 
     # get data
-    if verify is False:    
+    if verify is False:
         with ssl_verification(verify=verify):
             data = brainweb_dl.get_mri(
                 subject,
