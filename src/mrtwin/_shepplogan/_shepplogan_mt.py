@@ -44,11 +44,11 @@ class CrispMTSheppLoganPhantom(CrispSheppLoganPhantom):
 
     @property
     def T1(self):  # noqa
-        return self._properties["T1"]
+        return self._properties["T1w"]
 
     @property
     def T2(self):  # noqa
-        return self._properties["T2"]
+        return self._properties["T2w"]
 
     @property
     def k(self):  # noqa

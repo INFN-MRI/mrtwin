@@ -1,11 +1,11 @@
 """Array shape manipulation routines."""
 
-__all__ = ["resize", "resample"]
+__all__ = ["resize"]
 
 import numpy as np
 
-from ._fft import fftc, ifftc
-from ._filter import fermi
+
+from ._broadcasting import _expand_shapes
 
 
 def resize(input, oshape):
@@ -91,87 +91,3 @@ def resize(input, oshape):
     output[oslice] = input[islice]
 
     return output
-
-
-def resample(input, oshape, filt=True, polysmooth=False):
-    """
-    Resample a n-dimensional signal.
-
-    Parameters
-    ----------
-    input : np.ndarray
-        Input array of shape ``(..., ishape)``.
-    oshape : Sequence
-        Output shape.
-    filt : bool, optional
-        If True and signal is upsampled (i.e., ``any(oshape > ishape)``),
-        apply Fermi filter to limit ringing.
-        The default is True.
-    polysmooth : bool, optional
-        If true, perform polynomial smoothing.
-        The default is False. !!! NOT IMPLEMENTED YET !!!
-
-    Returns
-    -------
-    output : np.ndarray
-        Resampled tensor of shape ``(..., oshape)``.
-
-    """
-    if isinstance(oshape, int):
-        oshape = [oshape]
-
-    # first, get number of dimensions
-    ndim = len(oshape)
-    axes = list(range(-ndim, 0))
-    isreal = np.isreal(input).all()
-
-    # take fourier transform along last ndim axes
-    freq = fftc(input, axes)
-
-    # get initial and final shapes
-    ishape1, oshape1 = _expand_shapes(input.shape, oshape)
-
-    # build filter
-    if filt and np.any(np.asarray(oshape1) > np.asarray(ishape1)):
-        size = np.max(oshape1)
-        width = np.min(oshape1)
-        filt = fermi(ndim, size, width)
-        filt = resize(filt, oshape1)  # crop to match dimension
-    else:
-        filt = None
-
-    # resize in frequency space
-    freq = resize(freq, oshape1)
-
-    # if required, apply filtering
-    if filt is not None:
-        print("filtering")
-        freq = freq * filt  # .to(freq.device)
-
-    # transform back
-    output = ifftc(freq, axes)
-
-    # smooth
-    if polysmooth:
-        print("Polynomial smoothing not implemented yet; skipping")
-
-    # take magnitude if original signal was real
-    if isreal:
-        output = abs(output)
-
-    return output
-
-
-# %% subroutines
-def _expand_shapes(*shapes):
-    shapes = [list(shape) for shape in shapes]
-    max_ndim = max(len(shape) for shape in shapes)
-
-    shapes_exp = [np.asarray([1] * (max_ndim - len(shape)) + shape) for shape in shapes]
-    shapes_exp = np.stack(shapes_exp, axis=0)  # (nshapes, max_ndim)
-    shapes_exp = np.max(shapes_exp, axis=0)
-
-    # restore original shape in non-padded portions
-    shapes_exp = [list(shapes_exp[: -len(shape)]) + shape for shape in shapes]
-
-    return tuple(shapes_exp)

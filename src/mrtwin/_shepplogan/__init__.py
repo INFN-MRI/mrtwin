@@ -16,7 +16,7 @@ VALID_SEGMENTATION = ["crisp"]
 
 def shepplogan_phantom(
     ndim: int,
-    shape: int | Sequence[int] = None,
+    shape: int | Sequence[int],
     model: str = "single-pool",
     segtype: str | bool = "crisp",
     B0: float = 1.5,
@@ -31,9 +31,8 @@ def shepplogan_phantom(
     ndim : int
         Number of spatial dimensions. If ndim == 2, use a single slice
         (central axial slice).
-    shape: int | Sequence[int | None, optional
-        Shape of the output data, the data will be interpolated to the given shape.
-        If int, assume isotropic matrix. The default is ``None`` (original shape).
+    shape: int | Sequence[int]
+        Shape of the output data. If int, assume isotropic matrix.
     model : str, optional
         String selecting one of the built-in
         tissue models. Valid entries are:

@@ -53,7 +53,9 @@ class CrispPhantomMixin(PhantomMixin):
         for param in out._properties.keys():
             param_map = np.zeros(out.segmentation.shape, dtype=np.float32)
             for idx in range(len(out._properties[param])):
-                param_map += param[idx] * (out.segmentation == out._label[idx])
+                param_map += out._properties[param][idx] * (
+                    out.segmentation == out._label[idx]
+                )
             out._properties[param] = param_map
 
         return out

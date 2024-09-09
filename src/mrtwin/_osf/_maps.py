@@ -168,27 +168,10 @@ def get_osf_maps(
     elif output_res is None:
         output_res = orig_res  # 0.4 mm iso
 
-    # Get tissue mask
-    mask = data[0]
-    mask = data[0] / np.nanmax(data[0])
-    mask = mask > 0.1
-
-    # Get scaling
-    scale = [np.nanmedian(data[n][mask]) for n in range(data.shape[0])]
-
     # Set prescription
     data = _prescription.set_prescription(
         data, orig_res, data.shape[-ndim:], output_res, shape
     )
-
-    # Get tissue mask
-    mask = data[0]
-    mask = data[0] / np.nanmax(data[0])
-    mask = mask > 0.1
-
-    # Rescale
-    for n in range(data.shape[0]):
-        data[n] = data[n] / np.nanmedian(data[n][mask]) * scale[n]
 
     # Clean-up
     data = np.nan_to_num(data, posinf=0.0, neginf=0.0)

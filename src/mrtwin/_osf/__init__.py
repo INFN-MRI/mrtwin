@@ -30,7 +30,7 @@ def osf_phantom(
         (central axial slice).
     subject : int
         Subject id to download.
-    shape: int | Sequence[int | None, optional
+    shape: int | Sequence[int] | None, optional
         Shape of the output data, the data will be interpolated to the given shape.
         If int, assume isotropic matrix. The default is ``None`` (original shape).
     output_res: float | Sequence[float] | None, optional

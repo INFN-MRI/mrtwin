@@ -54,7 +54,7 @@ def brainweb_phantom(
         (central axial slice).
     subject : int
         Subject id to download.
-    shape: int | Sequence[int | None, optional
+    shape: int | Sequence[int] | None, optional
         Shape of the output data, the data will be interpolated to the given shape.
         If int, assume isotropic matrix. The default is ``None`` (original shape).
     model : str, optional
@@ -73,7 +73,7 @@ def brainweb_phantom(
         If it is ``False``, return a dense numeric phantom.
         The default is ``crisp``.
     output_res: float | Sequence[float] | None, optional
-        Resolution of the output data, the data will be rescale to the given resolution.
+        Resolution of the output data, the data will be rescaled to the given resolution.
         If scalar, assume isotropic resolution. The default is ``None``
         (estimate from shape assuming same fov).
     cache : bool, optional

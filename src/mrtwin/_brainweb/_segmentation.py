@@ -235,7 +235,8 @@ def get_brainweb_segmentation(
 
     if shape is None and output_res is None:
         # normalize probability
-        data = data / data.sum(axis=0)
+        with np.errstate(divide="ignore", invalid="ignore"):
+            data = data / data.sum(axis=0)
         data = np.nan_to_num(data, posinf=0.0, neginf=0.0)
         return data.astype(np.float32)
     elif output_res is None:
@@ -247,7 +248,8 @@ def get_brainweb_segmentation(
     )
 
     # normalize probability
-    data = data / data.sum(axis=0)
+    with np.errstate(divide="ignore", invalid="ignore"):
+        data = data / data.sum(axis=0)
     data = np.nan_to_num(data, posinf=0.0, neginf=0.0)
 
     return data.astype(np.float32)

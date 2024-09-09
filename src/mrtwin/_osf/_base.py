@@ -199,7 +199,7 @@ class OSFPhantom(PhantomMixin):
         file_path = os.path.join(cache_dir, fname)
 
         # try to load
-        if os.path.exists(file_path):
+        if os.path.exists(file_path) and not (force):
             return np.load(file_path), file_path
         else:
             maps = get_osf_maps(
