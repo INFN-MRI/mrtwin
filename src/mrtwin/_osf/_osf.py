@@ -9,7 +9,7 @@ import numpy as np
 
 from .. import _classes
 
-from ..build import PhantomMixin
+from .._build import PhantomMixin
 from .._utils import CacheDirType
 
 from ._base import OSFPhantom

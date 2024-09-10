@@ -62,4 +62,4 @@ def test_osf_phantom_default():
     assert phantom is not None, "Phantom output should not be None."
 
     # Validate the default shape for 2D phantom (since no shape was provided)
-    assert phantom.T1.shape == (200, 200)
+    assert phantom.T1.shape == (256, 256)

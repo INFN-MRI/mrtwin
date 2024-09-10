@@ -9,7 +9,7 @@ import numpy as np
 
 from .. import _classes
 
-from ..build import FuzzyPhantomMixin, CrispPhantomMixin, _fuzzy_to_crisp
+from .._build import FuzzyPhantomMixin, CrispPhantomMixin, _fuzzy_to_crisp
 from .._utils import CacheDirType
 
 from ._base import BrainwebPhantom

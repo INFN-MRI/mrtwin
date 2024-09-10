@@ -8,7 +8,7 @@ import numpy as np
 
 from .. import _classes
 
-from ..build import CrispPhantomMixin
+from .._build import CrispPhantomMixin
 from .._utils import CacheDirType
 
 from ._base import SheppLoganPhantom

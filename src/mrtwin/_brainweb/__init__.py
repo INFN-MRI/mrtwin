@@ -76,6 +76,9 @@ def brainweb_phantom(
         Resolution of the output data, the data will be rescaled to the given resolution.
         If scalar, assume isotropic resolution. The default is ``None``
         (estimate from shape assuming same fov).
+    B0 : float, optional
+        Static field strength in [T].
+        The default is `1.5`.
     cache : bool, optional
         If ``True``, cache the phantom. The default is ``True``.
     cache_dir : CacheDirType, optional
@@ -96,21 +99,21 @@ def brainweb_phantom(
     -------
     PhantomType
         Brainweb phantom.
-        
+
     Examples
     --------
     >>> import numpy as np
     >>> import matplotlib.pyplot as plt
     >>> from mrtwin import brainweb_phantom
-    
+
     We can generate a dense single slice 2D phantom with a matrix size
-    of `(200, 200)` at `1.085` mm isotropic resolution for the 
+    of `(200, 200)` at `1.085` mm isotropic resolution for the
     brainweb subject `n=4` as:
-    
+
     >>> phantom = brainweb_phantom(ndim=2, subject=4, segtype=False)
-    
+
     Phantom T1 and T2 maps, can be accessed as:
-    
+
     >>> fig, ax = plt.subplots(2, 1)
 
     >>> im1 = ax[0].imshow(phantom.T1, cmap="magma", vmax=1500)

@@ -2,12 +2,22 @@
 
 __all__ = ["b0field"]
 
+
+from typing import Sequence
+
+
 import numpy as np
+
 
 from .._utils import fftc, ifftc
 
 
-def b0field(chi, b0range=None, mask=None):
+def b0field(
+    chi: np.ndarray,
+    b0range: Sequence[float] | None = None,
+    mask: np.ndarray | None = None,
+    B0: float = 1.5,
+):
     """
     Simulate inhomogeneous B0 fields.
 
@@ -27,6 +37,11 @@ def b0field(chi, b0range=None, mask=None):
         Region of support of the object of
         shape ``(ny, nx)`` (2D) or ``(nz, ny, nx)`` (3D).
         The default is ``None``.
+    B0 : float, optional
+        Static field strength in [T]. Used to compute
+        B0 scaling (assuming 1H imaging)
+        if `b0range` is not provided.
+        The default is `1.5`.
 
     Returns
     -------
@@ -36,24 +51,24 @@ def b0field(chi, b0range=None, mask=None):
 
     Example
     -------
-    >>> import mrtwin
+    >>> from mrtwin import shepplogan_phantom, b0field
 
     We can generate a 2D B0 field map of shape ``(ny=128, nx=128)`` starting from a
     magnetic susceptibility distribution:
 
-    >>> chi = mrtwin.shepplogan(2, 128).Chi
-    >>> b0map = deepmr.b0field(chi)
+    >>> chi = shepplogan_phantom(2, 128, segtype=False).Chi
+    >>> b0map = b0field(chi)
 
     B0 values range can be specified using ``b0range`` argument:
 
-    >>> b0map = deepmr.b0field(chi, b0range=(-500, 500))
+    >>> b0map = b0field(chi, b0range=(-500, 500))
 
     """
-    # make sure this is a torch tensor
-    chi = torch.as_tensor(chi, dtype=torch.float32)
-
     # get input shape
     ishape = chi.shape
+
+    # get number of spatial dims
+    ndim = len(ishape)
 
     # get k space coordinates
     kgrid = [
@@ -65,21 +80,27 @@ def b0field(chi, b0range=None, mask=None):
 
     knorm = (kgrid**2).sum(axis=-1) + np.finfo(np.float32).eps
     dipole_kernel = 1 / 3 - (kgrid[..., 0] ** 2 / knorm)
-    dipole_kernel = torch.as_tensor(dipole_kernel, dtype=torch.float32)
 
     # apply convolution
-    B0map = fft.ifft(dipole_kernel * fft.fft(chi)).real
+    B0map = ifftc(
+        dipole_kernel * fftc(chi, ax=range(-ndim, 0)), ax=range(-ndim, 0)
+    ).real
 
     # rescale
-    B0map = B0map - B0map.min()  # (min, max) -> (0, max - min)
-    B0map = B0map / B0map.max()  # (0, max - min) -> (0, 1)
-    B0map = (
-        B0map * (b0range[1] - b0range[0]) + b0range[0]
-    )  # (0, 1) -> (b0range[0], b0range[1])
+    if b0range is not None:
+        B0map = B0map - B0map.min()  # (min, max) -> (0, max - min)
+        B0map = B0map / B0map.max()  # (0, max - min) -> (0, 1)
+        B0map = (
+            B0map * (b0range[1] - b0range[0]) + b0range[0]
+        )  # (0, 1) -> (b0range[0], b0range[1])
+    else:
+        gamma = 42.58 * 1e6  # Hz / T
+        scale = gamma * B0
+        B0map = scale * B0map
 
     # mask
     if mask is not None:
-        mask = torch.as_tensor(mask != 0)
+        mask = mask != 0
         B0map = mask * B0map
 
-    return torch.as_tensor(B0map, dtype=torch.float32)
+    return B0map.astype(np.float32)

@@ -48,6 +48,9 @@ def shepplogan_phantom(
         select crisp segmentation.
         If it is ``False``, return a dense numeric phantom.
         The default is ``crisp``.
+    B0 : float, optional
+        Static field strength in [T].
+        The default is `1.5`.
     cache : bool | None, optional
         If ``True``, cache the phantom.
         The default is ``True`` for 3D phantoms
@@ -60,20 +63,20 @@ def shepplogan_phantom(
     -------
     PhantomType
         Shepp-Logan phantom.
-        
+
     Examples
     --------
     >>> import numpy as np
     >>> import matplotlib.pyplot as plt
     >>> from mrtwin import shepplogan_phantom
-    
+
     We can generate a dense single slice 2D phantom with a matrix size
     of `(200, 200)` as:
-    
+
     >>> phantom = shepplogan_phantom(ndim=2, shape=200, segtype=False)
-    
+
     Phantom T1 and T2 maps, can be accessed as:
-    
+
     >>> fig, ax = plt.subplots(2, 1)
 
     >>> im1 = ax[0].imshow(phantom.T1, cmap="magma", vmax=1500)

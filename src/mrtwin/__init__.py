@@ -2,14 +2,20 @@
 
 __all__ = []
 
-from . import _brainweb  # noqa
-from . import _osf  # noqa
-from . import _shepplogan  # noqa
+from ._brainweb import brainweb_phantom
+from ._osf import osf_phantom
+from ._shepplogan import shepplogan_phantom
 
-from ._brainweb import *  # noqa
-from ._osf import *  # noqa
-from ._shepplogan import *  # noqa
+from ._fieldmap import b0field
+from ._fieldmap import b1field
+from ._fieldmap import sensmap
 
-__all__.extend(_brainweb.__all__)
-__all__.extend(_osf.__all__)
-__all__.extend(_shepplogan.__all__)
+# Phantoms
+__all__.append("brainweb_phantom")
+__all__.append("osf_phantom")
+__all__.append("shepplogan_phantom")
+
+# Fields
+__all__.append("b0field")
+__all__.append("b1field")
+__all__.append("sensmap")

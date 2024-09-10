@@ -7,7 +7,7 @@ import numpy as np
 
 from typing import Sequence
 
-from ..build import PhantomMixin
+from .._build import PhantomMixin
 from .._utils import CacheDirType, get_mrtwin_dir
 
 from ._maps import get_osf_maps

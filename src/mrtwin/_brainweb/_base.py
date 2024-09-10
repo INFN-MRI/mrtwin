@@ -9,7 +9,7 @@ from typing import Sequence
 
 from brainweb_dl._brainweb import BIG_RES_SHAPE, BIG_RES_MM
 
-from ..build import PhantomMixin
+from .._build import PhantomMixin
 from .._utils import CacheDirType, get_mrtwin_dir
 
 from ._segmentation import get_brainweb_segmentation
