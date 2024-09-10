@@ -71,7 +71,7 @@ class OSFPhantom(PhantomMixin):
 
         # default shape
         if output_shape is None:
-            output_shape = ndim * [200]
+            output_shape = ndim * [256]
         if output_shape is not None and np.isscalar(output_shape):
             output_shape = ndim * [output_shape]
         if output_shape is not None:
