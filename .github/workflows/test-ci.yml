@@ -48,13 +48,13 @@ jobs:
       - name: Run Tests
         shell: bash
         run: |
-          pytest -n auto  --cov=src --cov-report xml:coverage_${{ matrix.python-version }}.xml --cov-report term-missing:skip-covered --ignore=tests/phantoms/test_brainweb.py --ignore=tests/phantoms/test_osf.py      
+          pytest -n auto  --cov=src --cov-report xml:coverage_${{ matrix.python-version }} --cov-report term-missing:skip-covered --ignore=tests/phantoms/test_brainweb.py --ignore=tests/phantoms/test_osf.py      
       - name: Upload coverage
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: coverage_${{ matrix.python-version }}.xml
-          path: coverage_${{ matrix.python-version }}.xml
+          name: coverage_${{ matrix.python-version }}
+          path: coverage_${{ matrix.python-version }}
           
   get-commit-message:
     runs-on: ubuntu-latest
