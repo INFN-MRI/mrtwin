@@ -1,0 +1,608 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mrtwin._misc._rigid_motion &#8212; MRTwin Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/mrtwin/_misc/_rigid_motion';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">MRTwin Documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../index.html">
+                    MRTwin
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../generated/autoexamples/index.html">Examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../generated/autoexamples/01.Phantoms/index.html">Phantom Examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/autoexamples/01.Phantoms/example_cbs_neuro.html">Open Science CBS Neuroimaging Repository Phantom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/autoexamples/01.Phantoms/example_shepplogan.html">Shepp-Logan Phantom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/autoexamples/01.Phantoms/example_brainweb.html">Brainweb Phantom</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../generated/autoexamples/02.Fields/index.html">Fields Examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/autoexamples/02.Fields/example_staticfield.html">Static Field Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/autoexamples/02.Fields/example_sensmap.html">Coil Sensitivity Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/autoexamples/02.Fields/example_transmitfield.html">Transmit Field Simulation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../generated/autoexamples/03.Miscellaneous/index.html">Miscellaneous Examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/autoexamples/03.Miscellaneous/example_girf.html">Gradien System Response Function Generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/autoexamples/03.Miscellaneous/example_rigidmotion.html">Rigid Motion Pattern Generation</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../api.html">API References</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../generated/mrtwin.shepplogan_phantom.html">shepplogan_phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generated/mrtwin.brainweb_phantom.html">brainweb_phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generated/mrtwin.osf_phantom.html">osf_phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generated/mrtwin.b0field.html">b0field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generated/mrtwin.b1field.html">b1field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generated/mrtwin.sensmap.html">sensmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generated/mrtwin.rigid_motion.html">rigid_motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generated/mrtwin.generate_girf.html">generate_girf</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Miscellaneous</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/contributors.html">Contributors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/development.html">Developing MRTwin</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Related Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="http://github.com/paquiteau/brainweb-dl">Brainweb-dl</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/mckib2/phantominator">Phantominator</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/mikgroup/sigpy">SigPy</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/INFN-MRI/mrtwin" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/INFN-MRI/mrtwin/issues/new?title=Issue%20on%20page%20%2F_modules/mrtwin/_misc/_rigid_motion.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for mrtwin._misc._rigid_motion</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Rigid motion parameter generation routines.&quot;&quot;&quot;</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;rigid_motion&quot;</span><span class="p">]</span>
+
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Sequence</span>
+
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numba</span> <span class="k">as</span> <span class="nn">nb</span>
+
+
+<div class="viewcode-block" id="rigid_motion">
+<a class="viewcode-back" href="../../../generated/mrtwin.rigid_motion.html#mrtwin.rigid_motion">[docs]</a>
+<span class="k">def</span> <span class="nf">rigid_motion</span><span class="p">(</span>
+    <span class="n">ndim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">nframes</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">degree</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;moderate&quot;</span><span class="p">,</span>
+    <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate rigid motion pattern as a Markov Chain process.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ndim : int</span>
+<span class="sd">        Generate 2D (in-plane only) or 3D motion pattern.</span>
+<span class="sd">    nframes : int</span>
+<span class="sd">        Number of motion frames.</span>
+<span class="sd">    degree : str | Sequence[float], optional</span>
+<span class="sd">        Severity of motion. The default is ``&quot;moderate&quot;``.</span>
+<span class="sd">    seed : int, optional</span>
+<span class="sd">        Random number generator seed.</span>
+<span class="sd">        The default is ``42``.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Severity of motion can be specified via the ``degree`` argument.</span>
+<span class="sd">    This can be a string - accepted values are ``&quot;subtle&quot;``, ``&quot;moderate&quot;``</span>
+<span class="sd">    and ``&quot;severe&quot;``. These corresponds to the following motion ranges:</span>
+
+<span class="sd">    * ``&quot;subtle&quot;``: maximum rotation ``5.0 [deg]``; maximum translation ``2.0 [mm]``</span>
+<span class="sd">    * ``&quot;moderate&quot;``: maximum rotation ``10.0 [deg]``; maximum translation ``8.0 [mm]``</span>
+<span class="sd">    * ``&quot;severe&quot;``: maximum rotation ``16.0 [deg]``; maximum translation ``16.0 [mm]``</span>
+
+<span class="sd">    As an alternative, user can specify a tuple of floats, where ``degree[0]``</span>
+<span class="sd">    is the maximum rotation in ``[deg]`` and ``degree[1]`` is the maximum translation</span>
+<span class="sd">    in ``[mm]``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tuple[np.ndarray]</span>
+<span class="sd">        Motion parameters. The number of outputs depend on the value of ``ndims``.</span>
+
+<span class="sd">        For ``ndim == 2``:</span>
+
+<span class="sd">        * angleZ : tnp.ndarray</span>
+<span class="sd">            Rotation about ``z`` axis in ``[deg]`` of shape ``(nframes,)``.</span>
+<span class="sd">        * dy : np.ndarray</span>
+<span class="sd">            Translation towards ``y`` axis in ``[mm]`` of shape ``(nframes,)``.</span>
+<span class="sd">        * dx : np.ndarray</span>
+<span class="sd">            Translation towards ``x`` axis in ``[mm]`` of shape ``(nframes,)``.</span>
+
+<span class="sd">        For ``ndim == 3``:</span>
+
+<span class="sd">        * angleX : np.ndarray</span>
+<span class="sd">            Rotation about ``x`` axis in ``[deg]`` of shape ``(nframes,)``.</span>
+<span class="sd">        * angleY : torch.Tensor</span>
+<span class="sd">            Rotation about ``y`` axis in ``[deg]`` of shape ``(nframes,)``.</span>
+<span class="sd">        * angleZ : tnp.ndarray</span>
+<span class="sd">            Rotation about ``z`` axis in ``[deg]`` of shape ``(nframes,)``.</span>
+<span class="sd">        * dz : np.ndarray</span>
+<span class="sd">            Translation towards ``z`` axis in ``[mm]`` of shape ``(nframes,)``.</span>
+<span class="sd">        * dy : np.ndarray</span>
+<span class="sd">            Translation towards ``y`` axis in ``[mm]`` of shape ``(nframes,)``.</span>
+<span class="sd">        * dx : np.ndarray</span>
+<span class="sd">            Translation towards ``x`` axis in ``[mm]`` of shape ``(nframes,)``.</span>
+
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; from mrtwin import rigid_motion</span>
+
+<span class="sd">    We can generate a 6-degree rigid motion pattern for 1000 motion states as:</span>
+
+<span class="sd">    &gt;&gt;&gt; roll, pitch, yaw, dz, dy, dx = rigid_motion(ndim=3, nframes=1000)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Markov rate (I don&#39;t remember what this is :()</span>
+    <span class="n">rate</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]]</span>
+    <span class="n">transition_mtx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rate</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+    <span class="c1"># generate probability array</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">change</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">nframes</span><span class="p">)</span>
+
+    <span class="c1"># generate six random series</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">_generate_series</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">nframes</span><span class="p">,</span> <span class="n">transition_mtx</span><span class="p">,</span> <span class="n">change</span><span class="p">)</span>
+
+    <span class="c1"># rescale series</span>
+    <span class="n">x_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
+    <span class="n">x_max</span><span class="p">[</span><span class="n">x_max</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">x_max</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+    <span class="c1"># get motion range</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">degree</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">degree</span> <span class="o">==</span> <span class="s2">&quot;subtle&quot;</span><span class="p">:</span>
+            <span class="n">degree</span> <span class="o">=</span> <span class="p">[</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">degree</span> <span class="o">==</span> <span class="s2">&quot;moderate&quot;</span><span class="p">:</span>
+            <span class="n">degree</span> <span class="o">=</span> <span class="p">[</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">degree</span> <span class="o">==</span> <span class="s2">&quot;severe&quot;</span><span class="p">:</span>
+            <span class="n">degree</span> <span class="o">=</span> <span class="p">[</span><span class="mf">16.0</span><span class="p">,</span> <span class="mf">16.0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Severity of motion not recognized - must be either &#39;subtle&#39;, &#39;moderate&#39;, &#39;severe&#39; or a (rotation, translation) tuple in (deg, mm). Found </span><span class="si">{</span><span class="n">degree</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="p">)</span>
+
+    <span class="c1"># set</span>
+    <span class="n">roll</span> <span class="o">=</span> <span class="n">degree</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># deg, rotation around x</span>
+    <span class="n">pitch</span> <span class="o">=</span> <span class="n">degree</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># deg, rotation around y</span>
+    <span class="n">yaw</span> <span class="o">=</span> <span class="n">degree</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># deg, rotation around z</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="n">degree</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># mm, translation around x</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="n">degree</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>  <span class="c1"># mm, translation around x</span>
+    <span class="n">dz</span> <span class="o">=</span> <span class="n">degree</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>  <span class="c1"># mm, translation around x</span>
+
+    <span class="k">if</span> <span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">yaw</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">dx</span>
+    <span class="k">elif</span> <span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">roll</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">yaw</span><span class="p">,</span> <span class="n">dz</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">dx</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid number of dims! must be 2 or 3 - found </span><span class="si">{</span><span class="n">ndim</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># %% local utils</span>
+<span class="c1"># adapted from</span>
+<span class="c1"># https://ipython-books.github.io/131-simulating-a-discrete-time-markov-chain/</span>
+
+<span class="c1"># The statespace</span>
+<span class="n">states</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+
+
+<span class="nd">@nb</span><span class="o">.</span><span class="n">njit</span><span class="p">(</span><span class="n">fastmath</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># pragma: no cover</span>
+<span class="k">def</span> <span class="nf">_generate_series</span><span class="p">(</span><span class="n">n_parameters</span><span class="p">,</span> <span class="n">n_frames</span><span class="p">,</span> <span class="n">transition_matrix</span><span class="p">,</span> <span class="n">change</span><span class="p">):</span>
+    <span class="c1"># pre-allocate state history</span>
+    <span class="n">state_history</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_parameters</span><span class="p">,</span> <span class="n">n_frames</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+
+    <span class="c1"># initialize states</span>
+    <span class="n">current_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_parameters</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">nb</span><span class="o">.</span><span class="n">prange</span><span class="p">(</span><span class="n">n_parameters</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_frames</span><span class="p">):</span>
+            <span class="n">current_state</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">_generate_state</span><span class="p">(</span>
+                <span class="n">transition_matrix</span><span class="p">[</span><span class="n">current_state</span><span class="p">[</span><span class="n">p</span><span class="p">]],</span> <span class="n">change</span><span class="p">[</span><span class="n">p</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">state_history</span><span class="p">[</span><span class="n">p</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">state_history</span><span class="p">[</span><span class="n">p</span><span class="p">,</span> <span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">states</span><span class="p">[</span><span class="n">current_state</span><span class="p">[</span><span class="n">p</span><span class="p">]]</span>
+
+    <span class="k">return</span> <span class="n">state_history</span>
+
+
+<span class="nd">@nb</span><span class="o">.</span><span class="n">njit</span><span class="p">(</span><span class="n">fastmath</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># pragma: no cover</span>
+<span class="k">def</span> <span class="nf">_generate_state</span><span class="p">(</span><span class="n">probability</span><span class="p">,</span> <span class="n">change</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">change</span> <span class="o">&lt;=</span> <span class="n">probability</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="n">out_state</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">elif</span> <span class="n">change</span> <span class="o">&lt;=</span> <span class="n">probability</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">probability</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">out_state</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">out_state</span> <span class="o">=</span> <span class="mi">2</span>
+
+    <span class="k">return</span> <span class="n">out_state</span>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MRTwin Contributors
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, MRTwin Contributors.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

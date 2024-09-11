@@ -1,0 +1,996 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Open Science CBS Neuroimaging Repository Phantom &#8212; MRTwin Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/autoexamples/01.Phantoms/example_cbs_neuro';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Shepp-Logan Phantom" href="example_shepplogan.html" />
+    <link rel="prev" title="Phantom Examples" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">MRTwin Documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../index.html">
+                    MRTwin
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Examples</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Phantom Examples</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Open Science CBS Neuroimaging Repository Phantom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example_shepplogan.html">Shepp-Logan Phantom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example_brainweb.html">Brainweb Phantom</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../02.Fields/index.html">Fields Examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02.Fields/example_staticfield.html">Static Field Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../02.Fields/example_sensmap.html">Coil Sensitivity Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../02.Fields/example_transmitfield.html">Transmit Field Simulation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../03.Miscellaneous/index.html">Miscellaneous Examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../03.Miscellaneous/example_girf.html">Gradien System Response Function Generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../03.Miscellaneous/example_rigidmotion.html">Rigid Motion Pattern Generation</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../api.html">API References</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mrtwin.shepplogan_phantom.html">shepplogan_phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mrtwin.brainweb_phantom.html">brainweb_phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mrtwin.osf_phantom.html">osf_phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mrtwin.b0field.html">b0field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mrtwin.b1field.html">b1field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mrtwin.sensmap.html">sensmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mrtwin.rigid_motion.html">rigid_motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mrtwin.generate_girf.html">generate_girf</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Miscellaneous</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/contributors.html">Contributors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/development.html">Developing MRTwin</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Related Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="http://github.com/paquiteau/brainweb-dl">Brainweb-dl</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/mckib2/phantominator">Phantominator</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/mikgroup/sigpy">SigPy</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/INFN-MRI/mrtwin" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/INFN-MRI/mrtwin/edit/main/generated/autoexamples/01.Phantoms/example_cbs_neuro.rst" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/INFN-MRI/mrtwin/issues/new?title=Issue%20on%20page%20%2Fgenerated/autoexamples/01.Phantoms/example_cbs_neuro.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/generated/autoexamples/01.Phantoms/example_cbs_neuro.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Open Science CBS Neuroimaging Repository Phantom</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-usage">Basic Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#caching-mechanism">Caching mechanism</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disabling-ssl-verification-not-recommended">Disabling SSL verification (not recommended)</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-generated-autoexamples-01-phantoms-example-cbs-neuro-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code. or to run this example in your browser via Binder</p>
+</div>
+<section class="sphx-glr-example-title" id="open-science-cbs-neuroimaging-repository-phantom">
+<span id="sphx-glr-generated-autoexamples-01-phantoms-example-cbs-neuro-py"></span><h1>Open Science CBS Neuroimaging Repository Phantom<a class="headerlink" href="#open-science-cbs-neuroimaging-repository-phantom" title="Link to this heading">#</a></h1>
+<p>Example of Open Science CBS Neuroimaging Repository phantom creation.</p>
+<p>This dataset consists of an additional processing of the dataset created
+by Tardif et al. [1], and stored <a class="reference external" href="https://osf.io/qkbca/">in a Open Science Framework (OSF) repository</a>.</p>
+<p>This examples show how to generate numerical phantoms based on the Brainweb
+dataset.</p>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<p>[1] Tardif CL, Schäfer A, Trampel R, Villringer A, Turner R, Bazin PL.
+Open Science CBS Neuroimaging Repository: Sharing ultra-high-field MR images of the brain.
+Neuroimage. 2016 Jan 1;124(Pt B):1143-1148. doi: 10.1016/j.neuroimage.2015.08.042.
+Epub 2015 Aug 25. PMID: 26318051.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">mrtwin</span> <span class="kn">import</span> <a href="../../mrtwin.osf_phantom.html#mrtwin.osf_phantom" title="mrtwin.osf_phantom" class="sphx-glr-backref-module-mrtwin sphx-glr-backref-type-py-function"><span class="n">osf_phantom</span></a>
+</pre></div>
+</div>
+<section id="basic-usage">
+<h3>Basic Usage<a class="headerlink" href="#basic-usage" title="Link to this heading">#</a></h3>
+<p>The Open Science CBS Neuroimaging database (hereafter referred to as <cite>OSF</cite>)
+consists of a set of 20 normal brains (ids equal to <code class="docutils literal notranslate"><span class="pre">[1-4,</span> <span class="pre">6,</span> <span class="pre">8-15,</span> <span class="pre">17,</span> <span class="pre">19,</span> <span class="pre">22-23,</span> <span class="pre">25,</span> <span class="pre">27-28]</span></code>)
+at a nominal 0.5 mm isotropic and a shape of <code class="docutils literal notranslate"><span class="pre">(nz,</span> <span class="pre">ny,</span> <span class="pre">nx)</span> <span class="pre">=</span> <span class="pre">(454,</span> <span class="pre">544,</span> <span class="pre">454)</span></code>.</p>
+<p>A digital OSF phantom can be created as:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">phantom</span> <span class="o">=</span> <a href="../../mrtwin.osf_phantom.html#mrtwin.osf_phantom" title="mrtwin.osf_phantom" class="sphx-glr-backref-module-mrtwin sphx-glr-backref-type-py-function"><span class="n">osf_phantom</span></a><span class="p">(</span><span class="n">ndim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">subject</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 2D phantom</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0.00/196M [00:00&lt;?, ?bytes/s]
+  0%|          | 81.9k/196M [00:00&lt;06:58, 469kbytes/s]
+  1%|          | 1.69M/196M [00:00&lt;00:26, 7.46Mbytes/s]
+  2%|▏         | 4.15M/196M [00:00&lt;00:13, 14.1Mbytes/s]
+  4%|▍         | 8.81M/196M [00:00&lt;00:07, 25.7Mbytes/s]
+  6%|▋         | 12.3M/196M [00:00&lt;00:06, 28.2Mbytes/s]
+  9%|▉         | 17.8M/196M [00:00&lt;00:04, 36.8Mbytes/s]
+ 11%|█         | 21.6M/196M [00:00&lt;00:04, 35.3Mbytes/s]
+ 13%|█▎        | 25.9M/196M [00:00&lt;00:04, 37.7Mbytes/s]
+ 15%|█▌        | 30.2M/196M [00:00&lt;00:04, 39.3Mbytes/s]
+ 17%|█▋        | 34.3M/196M [00:01&lt;00:04, 39.6Mbytes/s]
+ 20%|█▉        | 39.0M/196M [00:01&lt;00:03, 42.0Mbytes/s]
+ 22%|██▏       | 43.3M/196M [00:01&lt;00:03, 42.1Mbytes/s]
+ 24%|██▍       | 47.6M/196M [00:01&lt;00:03, 42.5Mbytes/s]
+ 26%|██▋       | 51.9M/196M [00:01&lt;00:03, 42.4Mbytes/s]
+ 29%|██▊       | 56.2M/196M [00:01&lt;00:03, 42.3Mbytes/s]
+ 31%|███       | 60.4M/196M [00:01&lt;00:03, 42.4Mbytes/s]
+ 33%|███▎      | 65.1M/196M [00:01&lt;00:03, 43.6Mbytes/s]
+ 36%|███▌      | 69.7M/196M [00:01&lt;00:02, 44.3Mbytes/s]
+ 38%|███▊      | 74.1M/196M [00:02&lt;00:02, 44.0Mbytes/s]
+ 40%|████      | 78.5M/196M [00:02&lt;00:02, 43.8Mbytes/s]
+ 42%|████▏     | 82.9M/196M [00:02&lt;00:02, 43.4Mbytes/s]
+ 44%|████▍     | 87.3M/196M [00:02&lt;00:02, 43.1Mbytes/s]
+ 47%|████▋     | 92.4M/196M [00:02&lt;00:02, 45.5Mbytes/s]
+ 49%|████▉     | 96.9M/196M [00:02&lt;00:02, 45.5Mbytes/s]
+ 52%|█████▏    | 102M/196M [00:02&lt;00:02, 42.1Mbytes/s]
+ 54%|█████▍    | 106M/196M [00:02&lt;00:02, 41.2Mbytes/s]
+ 57%|█████▋    | 112M/196M [00:02&lt;00:01, 43.6Mbytes/s]
+ 59%|█████▉    | 117M/196M [00:02&lt;00:01, 44.6Mbytes/s]
+ 62%|██████▏   | 121M/196M [00:03&lt;00:01, 44.3Mbytes/s]
+ 64%|██████▍   | 125M/196M [00:03&lt;00:01, 43.9Mbytes/s]
+ 67%|██████▋   | 131M/196M [00:03&lt;00:01, 42.4Mbytes/s]
+ 69%|██████▉   | 135M/196M [00:03&lt;00:01, 42.5Mbytes/s]
+ 71%|███████   | 139M/196M [00:03&lt;00:01, 42.4Mbytes/s]
+ 73%|███████▎  | 144M/196M [00:03&lt;00:01, 31.9Mbytes/s]
+ 76%|███████▌  | 149M/196M [00:03&lt;00:01, 35.7Mbytes/s]
+ 79%|███████▊  | 154M/196M [00:03&lt;00:01, 36.5Mbytes/s]
+ 81%|████████  | 159M/196M [00:04&lt;00:00, 37.8Mbytes/s]
+ 84%|████████▎ | 164M/196M [00:04&lt;00:00, 40.8Mbytes/s]
+ 86%|████████▌ | 168M/196M [00:04&lt;00:00, 40.2Mbytes/s]
+ 88%|████████▊ | 173M/196M [00:04&lt;00:00, 41.8Mbytes/s]
+ 91%|█████████ | 178M/196M [00:04&lt;00:00, 42.9Mbytes/s]
+ 93%|█████████▎| 182M/196M [00:04&lt;00:00, 42.5Mbytes/s]
+ 95%|█████████▌| 187M/196M [00:04&lt;00:00, 45.2Mbytes/s]
+ 98%|█████████▊| 192M/196M [00:04&lt;00:00, 45.3Mbytes/s]
+100%|██████████| 196M/196M [00:04&lt;00:00, 39.8Mbytes/s]
+
+  0%|          | 0.00/197M [00:00&lt;?, ?bytes/s]
+  0%|          | 49.2k/197M [00:00&lt;07:18, 448kbytes/s]
+  0%|          | 98.3k/197M [00:00&lt;07:13, 454kbytes/s]
+  0%|          | 246k/197M [00:00&lt;03:44, 873kbytes/s]
+  0%|          | 508k/197M [00:00&lt;02:09, 1.52Mbytes/s]
+  1%|          | 983k/197M [00:00&lt;01:14, 2.63Mbytes/s]
+  1%|          | 2.00M/197M [00:00&lt;00:38, 5.10Mbytes/s]
+  2%|▏         | 4.28M/197M [00:00&lt;00:17, 10.7Mbytes/s]
+  5%|▍         | 8.90M/197M [00:00&lt;00:08, 21.8Mbytes/s]
+  7%|▋         | 13.6M/197M [00:00&lt;00:06, 29.5Mbytes/s]
+  9%|▉         | 18.1M/197M [00:01&lt;00:05, 33.5Mbytes/s]
+ 11%|█         | 22.0M/197M [00:01&lt;00:04, 35.2Mbytes/s]
+ 14%|█▎        | 27.0M/197M [00:01&lt;00:04, 39.5Mbytes/s]
+ 16%|█▌        | 31.3M/197M [00:01&lt;00:04, 40.7Mbytes/s]
+ 18%|█▊        | 36.1M/197M [00:01&lt;00:03, 42.0Mbytes/s]
+ 21%|██        | 40.6M/197M [00:01&lt;00:03, 42.8Mbytes/s]
+ 23%|██▎       | 45.3M/197M [00:01&lt;00:03, 41.8Mbytes/s]
+ 25%|██▌       | 50.1M/197M [00:01&lt;00:03, 42.4Mbytes/s]
+ 28%|██▊       | 54.4M/197M [00:01&lt;00:03, 35.8Mbytes/s]
+ 30%|███       | 59.1M/197M [00:02&lt;00:03, 38.1Mbytes/s]
+ 33%|███▎      | 64.7M/197M [00:02&lt;00:03, 38.1Mbytes/s]
+ 35%|███▌      | 69.0M/197M [00:02&lt;00:03, 39.3Mbytes/s]
+ 38%|███▊      | 74.5M/197M [00:02&lt;00:02, 43.3Mbytes/s]
+ 40%|████      | 79.0M/197M [00:02&lt;00:02, 42.2Mbytes/s]
+ 42%|████▏     | 83.3M/197M [00:02&lt;00:02, 41.2Mbytes/s]
+ 45%|████▌     | 88.8M/197M [00:02&lt;00:02, 45.1Mbytes/s]
+ 48%|████▊     | 93.5M/197M [00:02&lt;00:02, 45.7Mbytes/s]
+ 50%|████▉     | 98.2M/197M [00:02&lt;00:02, 41.3Mbytes/s]
+ 53%|█████▎    | 103M/197M [00:03&lt;00:02, 42.3Mbytes/s]
+ 55%|█████▍    | 108M/197M [00:03&lt;00:02, 43.1Mbytes/s]
+ 57%|█████▋    | 112M/197M [00:03&lt;00:01, 43.6Mbytes/s]
+ 60%|█████▉    | 117M/197M [00:03&lt;00:01, 44.9Mbytes/s]
+ 62%|██████▏   | 122M/197M [00:03&lt;00:01, 45.0Mbytes/s]
+ 64%|██████▍   | 126M/197M [00:03&lt;00:01, 38.3Mbytes/s]
+ 67%|██████▋   | 132M/197M [00:03&lt;00:01, 43.6Mbytes/s]
+ 70%|██████▉   | 137M/197M [00:03&lt;00:01, 41.4Mbytes/s]
+ 72%|███████▏  | 142M/197M [00:03&lt;00:01, 44.8Mbytes/s]
+ 75%|███████▍  | 147M/197M [00:04&lt;00:01, 40.2Mbytes/s]
+ 78%|███████▊  | 153M/197M [00:04&lt;00:00, 44.6Mbytes/s]
+ 80%|████████  | 157M/197M [00:04&lt;00:00, 43.4Mbytes/s]
+ 82%|████████▏ | 162M/197M [00:04&lt;00:00, 43.8Mbytes/s]
+ 85%|████████▍ | 166M/197M [00:04&lt;00:00, 43.2Mbytes/s]
+ 87%|████████▋ | 171M/197M [00:04&lt;00:00, 43.8Mbytes/s]
+ 90%|████████▉ | 176M/197M [00:04&lt;00:00, 45.7Mbytes/s]
+ 92%|█████████▏| 181M/197M [00:04&lt;00:00, 42.4Mbytes/s]
+ 94%|█████████▍| 185M/197M [00:04&lt;00:00, 43.6Mbytes/s]
+ 97%|█████████▋| 190M/197M [00:05&lt;00:00, 43.4Mbytes/s]
+ 99%|█████████▉| 195M/197M [00:05&lt;00:00, 46.3Mbytes/s]
+100%|██████████| 197M/197M [00:05&lt;00:00, 38.0Mbytes/s]
+
+  0%|          | 0.00/196M [00:00&lt;?, ?bytes/s]
+  0%|          | 49.2k/196M [00:00&lt;07:23, 442kbytes/s]
+  0%|          | 98.3k/196M [00:00&lt;07:17, 447kbytes/s]
+  0%|          | 229k/196M [00:00&lt;04:00, 813kbytes/s]
+  0%|          | 475k/196M [00:00&lt;02:17, 1.42Mbytes/s]
+  0%|          | 934k/196M [00:00&lt;01:17, 2.52Mbytes/s]
+  1%|          | 1.92M/196M [00:00&lt;00:39, 4.94Mbytes/s]
+  2%|▏         | 4.11M/196M [00:00&lt;00:18, 10.4Mbytes/s]
+  4%|▍         | 8.04M/196M [00:00&lt;00:10, 18.7Mbytes/s]
+  7%|▋         | 12.7M/196M [00:00&lt;00:06, 26.7Mbytes/s]
+  9%|▉         | 17.4M/196M [00:01&lt;00:05, 32.2Mbytes/s]
+ 11%|█         | 22.0M/196M [00:01&lt;00:04, 36.0Mbytes/s]
+ 13%|█▎        | 26.0M/196M [00:01&lt;00:04, 37.2Mbytes/s]
+ 16%|█▌        | 31.1M/196M [00:01&lt;00:04, 39.9Mbytes/s]
+ 18%|█▊        | 35.8M/196M [00:01&lt;00:03, 41.1Mbytes/s]
+ 21%|██        | 40.5M/196M [00:01&lt;00:03, 42.0Mbytes/s]
+ 23%|██▎       | 44.7M/196M [00:01&lt;00:03, 41.5Mbytes/s]
+ 25%|██▍       | 48.8M/196M [00:01&lt;00:03, 39.9Mbytes/s]
+ 27%|██▋       | 53.3M/196M [00:01&lt;00:03, 36.0Mbytes/s]
+ 30%|███       | 58.9M/196M [00:02&lt;00:03, 41.0Mbytes/s]
+ 33%|███▎      | 64.4M/196M [00:02&lt;00:02, 45.0Mbytes/s]
+ 35%|███▌      | 69.1M/196M [00:02&lt;00:03, 39.5Mbytes/s]
+ 38%|███▊      | 74.2M/196M [00:02&lt;00:02, 42.6Mbytes/s]
+ 41%|████      | 80.0M/196M [00:02&lt;00:02, 46.6Mbytes/s]
+ 43%|████▎     | 84.8M/196M [00:02&lt;00:02, 41.1Mbytes/s]
+ 46%|████▌     | 90.1M/196M [00:02&lt;00:02, 44.2Mbytes/s]
+ 48%|████▊     | 94.7M/196M [00:02&lt;00:02, 40.8Mbytes/s]
+ 51%|█████     | 99.3M/196M [00:02&lt;00:02, 41.9Mbytes/s]
+ 53%|█████▎    | 104M/196M [00:03&lt;00:02, 42.8Mbytes/s]
+ 56%|█████▌    | 109M/196M [00:03&lt;00:02, 41.0Mbytes/s]
+ 58%|█████▊    | 114M/196M [00:03&lt;00:01, 42.7Mbytes/s]
+ 61%|██████    | 119M/196M [00:03&lt;00:01, 44.7Mbytes/s]
+ 63%|██████▎   | 124M/196M [00:03&lt;00:01, 44.7Mbytes/s]
+ 65%|██████▌   | 128M/196M [00:03&lt;00:01, 45.2Mbytes/s]
+ 68%|██████▊   | 133M/196M [00:03&lt;00:01, 41.7Mbytes/s]
+ 70%|███████   | 138M/196M [00:03&lt;00:01, 44.2Mbytes/s]
+ 73%|███████▎  | 143M/196M [00:03&lt;00:01, 44.4Mbytes/s]
+ 75%|███████▌  | 147M/196M [00:04&lt;00:01, 45.2Mbytes/s]
+ 77%|███████▋  | 152M/196M [00:04&lt;00:01, 42.0Mbytes/s]
+ 80%|███████▉  | 156M/196M [00:04&lt;00:00, 43.2Mbytes/s]
+ 82%|████████▏ | 161M/196M [00:04&lt;00:00, 42.5Mbytes/s]
+ 84%|████████▍ | 165M/196M [00:04&lt;00:00, 43.5Mbytes/s]
+ 87%|████████▋ | 170M/196M [00:04&lt;00:00, 45.1Mbytes/s]
+ 89%|████████▉ | 175M/196M [00:04&lt;00:00, 42.5Mbytes/s]
+ 91%|█████████▏| 179M/196M [00:04&lt;00:00, 36.3Mbytes/s]
+ 94%|█████████▍| 185M/196M [00:05&lt;00:00, 38.1Mbytes/s]
+ 97%|█████████▋| 189M/196M [00:05&lt;00:00, 37.8Mbytes/s]
+ 99%|█████████▉| 195M/196M [00:05&lt;00:00, 42.1Mbytes/s]
+100%|██████████| 196M/196M [00:05&lt;00:00, 37.3Mbytes/s]
+
+  0%|          | 0.00/195M [00:00&lt;?, ?bytes/s]
+  0%|          | 49.2k/195M [00:00&lt;07:21, 442kbytes/s]
+  0%|          | 98.3k/195M [00:00&lt;07:16, 447kbytes/s]
+  0%|          | 229k/195M [00:00&lt;04:00, 811kbytes/s]
+  0%|          | 475k/195M [00:00&lt;02:15, 1.43Mbytes/s]
+  0%|          | 950k/195M [00:00&lt;01:15, 2.59Mbytes/s]
+  1%|          | 1.97M/195M [00:00&lt;00:37, 5.11Mbytes/s]
+  2%|▏         | 4.21M/195M [00:00&lt;00:17, 10.7Mbytes/s]
+  4%|▍         | 8.49M/195M [00:00&lt;00:09, 20.6Mbytes/s]
+  7%|▋         | 13.0M/195M [00:00&lt;00:06, 28.1Mbytes/s]
+  9%|▉         | 17.4M/195M [00:01&lt;00:05, 32.7Mbytes/s]
+ 11%|█         | 21.5M/195M [00:01&lt;00:05, 32.1Mbytes/s]
+ 14%|█▎        | 26.6M/195M [00:01&lt;00:04, 37.4Mbytes/s]
+ 16%|█▌        | 30.4M/195M [00:01&lt;00:04, 35.8Mbytes/s]
+ 18%|█▊        | 35.9M/195M [00:01&lt;00:03, 41.2Mbytes/s]
+ 21%|██        | 40.1M/195M [00:01&lt;00:04, 31.1Mbytes/s]
+ 23%|██▎       | 45.3M/195M [00:01&lt;00:04, 31.7Mbytes/s]
+ 26%|██▌       | 50.7M/195M [00:01&lt;00:03, 36.8Mbytes/s]
+ 28%|██▊       | 54.7M/195M [00:02&lt;00:03, 36.4Mbytes/s]
+ 31%|███       | 60.0M/195M [00:02&lt;00:03, 40.2Mbytes/s]
+ 33%|███▎      | 64.5M/195M [00:02&lt;00:03, 39.2Mbytes/s]
+ 35%|███▌      | 69.2M/195M [00:02&lt;00:03, 39.4Mbytes/s]
+ 38%|███▊      | 74.3M/195M [00:02&lt;00:02, 42.5Mbytes/s]
+ 40%|████      | 78.9M/195M [00:02&lt;00:02, 41.5Mbytes/s]
+ 43%|████▎     | 83.8M/195M [00:02&lt;00:02, 43.0Mbytes/s]
+ 45%|████▌     | 88.2M/195M [00:02&lt;00:02, 36.3Mbytes/s]
+ 48%|████▊     | 93.2M/195M [00:03&lt;00:02, 34.9Mbytes/s]
+ 51%|█████     | 98.6M/195M [00:03&lt;00:02, 39.5Mbytes/s]
+ 53%|█████▎    | 103M/195M [00:03&lt;00:02, 37.7Mbytes/s]
+ 56%|█████▌    | 108M/195M [00:03&lt;00:02, 41.2Mbytes/s]
+ 58%|█████▊    | 113M/195M [00:03&lt;00:02, 38.8Mbytes/s]
+ 61%|██████    | 118M/195M [00:03&lt;00:01, 43.1Mbytes/s]
+ 63%|██████▎   | 123M/195M [00:03&lt;00:02, 30.7Mbytes/s]
+ 66%|██████▌   | 128M/195M [00:03&lt;00:01, 35.7Mbytes/s]
+ 69%|██████▊   | 134M/195M [00:04&lt;00:01, 35.6Mbytes/s]
+ 71%|███████▏  | 139M/195M [00:04&lt;00:01, 39.9Mbytes/s]
+ 74%|███████▍  | 145M/195M [00:04&lt;00:01, 43.2Mbytes/s]
+ 77%|███████▋  | 149M/195M [00:04&lt;00:01, 38.9Mbytes/s]
+ 79%|███████▊  | 154M/195M [00:04&lt;00:01, 30.4Mbytes/s]
+ 81%|████████  | 158M/195M [00:04&lt;00:01, 32.8Mbytes/s]
+ 83%|████████▎ | 163M/195M [00:04&lt;00:00, 37.2Mbytes/s]
+ 86%|████████▌ | 168M/195M [00:05&lt;00:00, 34.9Mbytes/s]
+ 88%|████████▊ | 172M/195M [00:05&lt;00:00, 35.3Mbytes/s]
+ 90%|█████████ | 176M/195M [00:05&lt;00:00, 37.8Mbytes/s]
+ 93%|█████████▎| 182M/195M [00:05&lt;00:00, 42.1Mbytes/s]
+ 96%|█████████▌| 187M/195M [00:05&lt;00:00, 43.6Mbytes/s]
+ 98%|█████████▊| 191M/195M [00:05&lt;00:00, 42.5Mbytes/s]
+100%|██████████| 195M/195M [00:05&lt;00:00, 34.1Mbytes/s]
+
+  0%|          | 0.00/196M [00:00&lt;?, ?bytes/s]
+  0%|          | 49.2k/196M [00:00&lt;07:22, 442kbytes/s]
+  0%|          | 98.3k/196M [00:00&lt;07:16, 448kbytes/s]
+  0%|          | 229k/196M [00:00&lt;04:00, 814kbytes/s]
+  0%|          | 475k/196M [00:00&lt;02:15, 1.44Mbytes/s]
+  0%|          | 950k/196M [00:00&lt;01:15, 2.59Mbytes/s]
+  1%|          | 1.98M/196M [00:00&lt;00:37, 5.15Mbytes/s]
+  2%|▏         | 4.26M/196M [00:00&lt;00:17, 10.8Mbytes/s]
+  4%|▍         | 8.04M/196M [00:00&lt;00:09, 18.8Mbytes/s]
+  7%|▋         | 12.8M/196M [00:00&lt;00:06, 26.9Mbytes/s]
+  9%|▉         | 17.4M/196M [00:01&lt;00:05, 32.4Mbytes/s]
+ 11%|█         | 22.0M/196M [00:01&lt;00:04, 36.2Mbytes/s]
+ 13%|█▎        | 26.0M/196M [00:01&lt;00:04, 37.1Mbytes/s]
+ 16%|█▌        | 30.3M/196M [00:01&lt;00:04, 37.0Mbytes/s]
+ 18%|█▊        | 35.0M/196M [00:01&lt;00:04, 39.5Mbytes/s]
+ 20%|██        | 39.9M/196M [00:01&lt;00:03, 42.0Mbytes/s]
+ 23%|██▎       | 45.1M/196M [00:01&lt;00:03, 38.8Mbytes/s]
+ 25%|██▌       | 49.8M/196M [00:01&lt;00:03, 40.9Mbytes/s]
+ 28%|██▊       | 54.0M/196M [00:01&lt;00:03, 40.8Mbytes/s]
+ 30%|███       | 59.4M/196M [00:02&lt;00:03, 44.5Mbytes/s]
+ 33%|███▎      | 63.9M/196M [00:02&lt;00:02, 44.7Mbytes/s]
+ 35%|███▍      | 68.5M/196M [00:02&lt;00:03, 42.0Mbytes/s]
+ 37%|███▋      | 73.2M/196M [00:02&lt;00:02, 43.3Mbytes/s]
+ 40%|███▉      | 77.5M/196M [00:02&lt;00:02, 42.7Mbytes/s]
+ 42%|████▏     | 82.9M/196M [00:02&lt;00:02, 45.8Mbytes/s]
+ 45%|████▍     | 87.5M/196M [00:02&lt;00:02, 41.3Mbytes/s]
+ 47%|████▋     | 92.5M/196M [00:02&lt;00:02, 43.1Mbytes/s]
+ 50%|████▉     | 97.3M/196M [00:02&lt;00:02, 39.3Mbytes/s]
+ 52%|█████▏    | 103M/196M [00:03&lt;00:02, 43.0Mbytes/s]
+ 55%|█████▍    | 107M/196M [00:03&lt;00:02, 43.3Mbytes/s]
+ 57%|█████▋    | 112M/196M [00:03&lt;00:02, 33.9Mbytes/s]
+ 60%|█████▉    | 117M/196M [00:03&lt;00:02, 39.2Mbytes/s]
+ 62%|██████▏   | 122M/196M [00:03&lt;00:01, 40.1Mbytes/s]
+ 65%|██████▍   | 127M/196M [00:03&lt;00:01, 37.6Mbytes/s]
+ 68%|██████▊   | 132M/196M [00:03&lt;00:01, 42.1Mbytes/s]
+ 70%|███████   | 137M/196M [00:03&lt;00:01, 43.9Mbytes/s]
+ 73%|███████▎  | 142M/196M [00:04&lt;00:01, 44.5Mbytes/s]
+ 75%|███████▍  | 146M/196M [00:04&lt;00:01, 39.8Mbytes/s]
+ 77%|███████▋  | 151M/196M [00:04&lt;00:01, 40.3Mbytes/s]
+ 79%|███████▉  | 155M/196M [00:04&lt;00:01, 37.0Mbytes/s]
+ 82%|████████▏ | 160M/196M [00:04&lt;00:00, 40.7Mbytes/s]
+ 84%|████████▍ | 165M/196M [00:04&lt;00:00, 42.9Mbytes/s]
+ 87%|████████▋ | 170M/196M [00:04&lt;00:00, 43.2Mbytes/s]
+ 89%|████████▉ | 174M/196M [00:04&lt;00:00, 40.4Mbytes/s]
+ 91%|█████████▏| 179M/196M [00:04&lt;00:00, 42.1Mbytes/s]
+ 94%|█████████▎| 183M/196M [00:05&lt;00:00, 42.6Mbytes/s]
+ 96%|█████████▌| 188M/196M [00:05&lt;00:00, 41.5Mbytes/s]
+ 98%|█████████▊| 192M/196M [00:05&lt;00:00, 42.6Mbytes/s]
+100%|██████████| 196M/196M [00:05&lt;00:00, 36.7Mbytes/s]
+</pre></div>
+</div>
+<p>Here, without loss of generality, we use a single-slice 2D phantom.
+A 3D phantom can be generated by setting <code class="docutils literal notranslate"><span class="pre">ndim=3</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">(M0,</span> <span class="pre">T1,</span> <span class="pre">T2,</span> <span class="pre">T2*,</span> <span class="pre">Chi)</span></code> properties of the phantom
+can be direcly accessed as:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fig1</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax1</span></a> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<a href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.AxesImage" title="matplotlib.image.AxesImage" class="sphx-glr-backref-module-matplotlib-image sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">im0</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax1</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">phantom</span><span class="o">.</span><span class="n">M0</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax1</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">),</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax1</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;M0 [a.u.]&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.colorbar.html#matplotlib.figure.Figure.colorbar" title="matplotlib.figure.Figure.colorbar" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-method"><span class="n">fig1</span><span class="o">.</span><span class="n">colorbar</span></a><span class="p">(</span><a href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.AxesImage" title="matplotlib.image.AxesImage" class="sphx-glr-backref-module-matplotlib-image sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">im0</span></a><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax1</span></a><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">)</span>
+
+<a href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.AxesImage" title="matplotlib.image.AxesImage" class="sphx-glr-backref-module-matplotlib-image sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">im1</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax1</span></a><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">phantom</span><span class="o">.</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">T1</span></a><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;magma&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax1</span></a><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">),</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax1</span></a><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;T1 [ms]&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.colorbar.html#matplotlib.figure.Figure.colorbar" title="matplotlib.figure.Figure.colorbar" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-method"><span class="n">fig1</span><span class="o">.</span><span class="n">colorbar</span></a><span class="p">(</span><a href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.AxesImage" title="matplotlib.image.AxesImage" class="sphx-glr-backref-module-matplotlib-image sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">im1</span></a><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax1</span></a><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">)</span>
+
+<a href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.AxesImage" title="matplotlib.image.AxesImage" class="sphx-glr-backref-module-matplotlib-image sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">im2</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax1</span></a><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">phantom</span><span class="o">.</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">T2</span></a><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax1</span></a><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">),</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax1</span></a><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;T2 [ms]&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.colorbar.html#matplotlib.figure.Figure.colorbar" title="matplotlib.figure.Figure.colorbar" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-method"><span class="n">fig1</span><span class="o">.</span><span class="n">colorbar</span></a><span class="p">(</span><a href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.AxesImage" title="matplotlib.image.AxesImage" class="sphx-glr-backref-module-matplotlib-image sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">im2</span></a><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax1</span></a><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">)</span>
+
+<a href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.AxesImage" title="matplotlib.image.AxesImage" class="sphx-glr-backref-module-matplotlib-image sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">im3</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax1</span></a><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">phantom</span><span class="o">.</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">T2s</span></a><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax1</span></a><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">),</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax1</span></a><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;T2* [ms]&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.colorbar.html#matplotlib.figure.Figure.colorbar" title="matplotlib.figure.Figure.colorbar" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-method"><span class="n">fig1</span><span class="o">.</span><span class="n">colorbar</span></a><span class="p">(</span><a href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.AxesImage" title="matplotlib.image.AxesImage" class="sphx-glr-backref-module-matplotlib-image sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">im3</span></a><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax1</span></a><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">)</span>
+
+<a href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.AxesImage" title="matplotlib.image.AxesImage" class="sphx-glr-backref-module-matplotlib-image sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">im4</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax1</span></a><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">phantom</span><span class="o">.</span><span class="n">Chi</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax1</span></a><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">),</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax1</span></a><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Chi&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.colorbar.html#matplotlib.figure.Figure.colorbar" title="matplotlib.figure.Figure.colorbar" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-method"><span class="n">fig1</span><span class="o">.</span><span class="n">colorbar</span></a><span class="p">(</span><a href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.AxesImage" title="matplotlib.image.AxesImage" class="sphx-glr-backref-module-matplotlib-image sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">im4</span></a><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax1</span></a><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">)</span>
+
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.tight_layout.html#matplotlib.pyplot.tight_layout" title="matplotlib.pyplot.tight_layout" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../../_images/sphx_glr_example_cbs_neuro_001.png" srcset="../../../_images/sphx_glr_example_cbs_neuro_001.png" alt="M0 [a.u.], T1 [ms], T2 [ms], T2* [ms], Chi" class = "sphx-glr-single-img"/><p>If required, the <code class="docutils literal notranslate"><span class="pre">properties</span></code> dictionary can be directly accessed as <code class="docutils literal notranslate"><span class="pre">phantom.properties</span></code>,
+e.g., to be passed as <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> to a simulator routine.</p>
+<p>By default, OSF phantoms are interpolated
+to 1.0625 mm isotropic resolution with a 256 isotropic matrix (272 mm iso FOV).</p>
+<p>These can be adjusted using <cite>shape</cite> and <cite>output_res</cite> model:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">shape</span></code> will control the matrix size without affecting the resolution.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output_res</span></code> will adjust the spatial resolution keeping the same (i.e., 200 iso) matrix</p></li>
+</ol>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">phantom</span> <span class="o">=</span> <a href="../../mrtwin.osf_phantom.html#mrtwin.osf_phantom" title="mrtwin.osf_phantom" class="sphx-glr-backref-module-mrtwin sphx-glr-backref-type-py-function"><span class="n">osf_phantom</span></a><span class="p">(</span><span class="n">ndim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">subject</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">phantom_mtx</span> <span class="o">=</span> <a href="../../mrtwin.osf_phantom.html#mrtwin.osf_phantom" title="mrtwin.osf_phantom" class="sphx-glr-backref-module-mrtwin sphx-glr-backref-type-py-function"><span class="n">osf_phantom</span></a><span class="p">(</span><span class="n">ndim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">subject</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>  <span class="c1"># can also be shape=(ny, nx)</span>
+<span class="n">phantom_res</span> <span class="o">=</span> <a href="../../mrtwin.osf_phantom.html#mrtwin.osf_phantom" title="mrtwin.osf_phantom" class="sphx-glr-backref-module-mrtwin sphx-glr-backref-type-py-function"><span class="n">osf_phantom</span></a><span class="p">(</span>
+    <span class="n">ndim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">subject</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">output_res</span><span class="o">=</span><span class="mf">2.0</span>
+<span class="p">)</span>  <span class="c1"># can also be output_res=(dy, dx)</span>
+<span class="n">phantom_mtx_res</span> <span class="o">=</span> <a href="../../mrtwin.osf_phantom.html#mrtwin.osf_phantom" title="mrtwin.osf_phantom" class="sphx-glr-backref-module-mrtwin sphx-glr-backref-type-py-function"><span class="n">osf_phantom</span></a><span class="p">(</span><span class="n">ndim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">subject</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">output_res</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">phantom</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">phantom_mtx</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">phantom_res</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">phantom_mtx_res</span><span class="p">)</span>
+
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fig2</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax2</span></a> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax2</span></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">phantom</span><span class="o">.</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">T1</span></a><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;magma&quot;</span><span class="p">),</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax2</span></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">),</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax2</span></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
+    <span class="s2">&quot;shape 256, res=1.0625, fov=272mm&quot;</span>
+<span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax2</span></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">phantom_mtx</span><span class="o">.</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">T1</span></a><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;magma&quot;</span><span class="p">),</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax2</span></a><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">),</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax2</span></a><span class="p">[</span>
+    <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+<span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;shape 200, res=1.36mm, fov=272mm&quot;</span><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax2</span></a><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">phantom_res</span><span class="o">.</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">T1</span></a><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;magma&quot;</span><span class="p">),</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax2</span></a><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">),</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax2</span></a><span class="p">[</span>
+    <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span>
+<span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;shape 200, res=2.0mm, fov=400mm&quot;</span><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax2</span></a><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">phantom_mtx_res</span><span class="o">.</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">T1</span></a><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;magma&quot;</span><span class="p">),</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax2</span></a><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">),</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax2</span></a><span class="p">[</span>
+    <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+<span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;shape 256, res=2.0mm, fov=512mm&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../../_images/sphx_glr_example_cbs_neuro_002.png" srcset="../../../_images/sphx_glr_example_cbs_neuro_002.png" alt="shape 256, res=1.0625, fov=272mm, shape 200, res=1.36mm, fov=272mm, shape 200, res=2.0mm, fov=400mm, shape 256, res=2.0mm, fov=512mm" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Dense OSF phantom with following properties:
+Number of spatial dimensions: 2
+Tissue properties: dict_keys([&#39;M0&#39;, &#39;T1&#39;, &#39;T2&#39;, &#39;T2s&#39;, &#39;Chi&#39;])
+Matrix size: (256, 256)
+
+Dense OSF phantom with following properties:
+Number of spatial dimensions: 2
+Tissue properties: dict_keys([&#39;M0&#39;, &#39;T1&#39;, &#39;T2&#39;, &#39;T2s&#39;, &#39;Chi&#39;])
+Matrix size: (200, 200)
+
+Dense OSF phantom with following properties:
+Number of spatial dimensions: 2
+Tissue properties: dict_keys([&#39;M0&#39;, &#39;T1&#39;, &#39;T2&#39;, &#39;T2s&#39;, &#39;Chi&#39;])
+Matrix size: (256, 256)
+
+Dense OSF phantom with following properties:
+Number of spatial dimensions: 2
+Tissue properties: dict_keys([&#39;M0&#39;, &#39;T1&#39;, &#39;T2&#39;, &#39;T2s&#39;, &#39;Chi&#39;])
+Matrix size: (200, 200)
+</pre></div>
+</div>
+<p>The physical parameter of each tissue class are reported by
+default for a field strength of 3.0 T.</p>
+<p>This can be changed via the <code class="docutils literal notranslate"><span class="pre">B0</span></code> argument:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># B0 strengths</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">B0</span></a> <span class="o">=</span> <span class="p">[</span><span class="mf">0.55</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="mf">11.7</span><span class="p">,</span> <span class="mf">13.3</span><span class="p">]</span>  <span class="c1"># field strengths in [T]</span>
+
+<span class="c1"># Generate phantoms with different field strengths</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">phantomB0</span></a> <span class="o">=</span> <span class="p">[</span><a href="../../mrtwin.osf_phantom.html#mrtwin.osf_phantom" title="mrtwin.osf_phantom" class="sphx-glr-backref-module-mrtwin sphx-glr-backref-type-py-function"><span class="n">osf_phantom</span></a><span class="p">(</span><span class="n">ndim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">subject</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">B0</span></a><span class="o">=</span><span class="n">strength</span><span class="p">)</span> <span class="k">for</span> <span class="n">strength</span> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">B0</span></a><span class="p">]</span>
+
+<span class="c1"># Display</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">T1</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.concatenate.html#numpy.concatenate" title="numpy.concatenate" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span></a><span class="p">([</span><span class="n">phantom</span><span class="o">.</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">T1</span></a> <span class="k">for</span> <span class="n">phantom</span> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">phantomB0</span></a><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">T2</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.concatenate.html#numpy.concatenate" title="numpy.concatenate" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span></a><span class="p">([</span><span class="n">phantom</span><span class="o">.</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">T2</span></a> <span class="k">for</span> <span class="n">phantom</span> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">phantomB0</span></a><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">T2s</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.concatenate.html#numpy.concatenate" title="numpy.concatenate" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span></a><span class="p">([</span><span class="n">phantom</span><span class="o">.</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">T2s</span></a> <span class="k">for</span> <span class="n">phantom</span> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">phantomB0</span></a><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fig5</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax5</span></a> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<a href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.AxesImage" title="matplotlib.image.AxesImage" class="sphx-glr-backref-module-matplotlib-image sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">im1</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax5</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">T1</span></a><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;magma&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax5</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">),</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax5</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;T1 [ms]&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.colorbar.html#matplotlib.figure.Figure.colorbar" title="matplotlib.figure.Figure.colorbar" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-method"><span class="n">fig5</span><span class="o">.</span><span class="n">colorbar</span></a><span class="p">(</span><a href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.AxesImage" title="matplotlib.image.AxesImage" class="sphx-glr-backref-module-matplotlib-image sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">im1</span></a><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax5</span></a><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">)</span>
+
+<a href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.AxesImage" title="matplotlib.image.AxesImage" class="sphx-glr-backref-module-matplotlib-image sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">im2</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax5</span></a><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">T2</span></a><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax5</span></a><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">),</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax5</span></a><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;T2 [ms]&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.colorbar.html#matplotlib.figure.Figure.colorbar" title="matplotlib.figure.Figure.colorbar" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-method"><span class="n">fig5</span><span class="o">.</span><span class="n">colorbar</span></a><span class="p">(</span><a href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.AxesImage" title="matplotlib.image.AxesImage" class="sphx-glr-backref-module-matplotlib-image sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">im2</span></a><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax5</span></a><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">)</span>
+
+<a href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.AxesImage" title="matplotlib.image.AxesImage" class="sphx-glr-backref-module-matplotlib-image sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">im3</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax5</span></a><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">T2s</span></a><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax5</span></a><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">),</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax5</span></a><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;T2* [ms]&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.colorbar.html#matplotlib.figure.Figure.colorbar" title="matplotlib.figure.Figure.colorbar" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-method"><span class="n">fig5</span><span class="o">.</span><span class="n">colorbar</span></a><span class="p">(</span><a href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.AxesImage" title="matplotlib.image.AxesImage" class="sphx-glr-backref-module-matplotlib-image sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">im3</span></a><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax5</span></a><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">)</span>
+
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.tight_layout.html#matplotlib.pyplot.tight_layout" title="matplotlib.pyplot.tight_layout" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../../_images/sphx_glr_example_cbs_neuro_003.png" srcset="../../../_images/sphx_glr_example_cbs_neuro_003.png" alt="T1 [ms], T2 [ms], T2* [ms]" class = "sphx-glr-single-img"/><p>In this case, T1 and T2* are extrapolated from their 3.0 T values.</p>
+</section>
+<section id="caching-mechanism">
+<h3>Caching mechanism<a class="headerlink" href="#caching-mechanism" title="Link to this heading">#</a></h3>
+<p>To reduce loading times, <code class="docutils literal notranslate"><span class="pre">mrtwin</span></code> implements a caching mechanism.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">cache</span></code> argument is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> (default behaviour), each phantom
+segmentation (identified by the number of spatial dimensions, matrix shape and resolution)
+is saved on the disk in <code class="docutils literal notranslate"><span class="pre">npy</span></code> format.</p>
+<p>The path is selected according to the following hierachy (inspired by <code class="docutils literal notranslate"><span class="pre">brainweb-dl</span></code>):</p>
+<ol class="arabic simple">
+<li><p>User-specific argument (<code class="docutils literal notranslate"><span class="pre">cache_dir</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MRTWIN_DIR</span></code> environment variable</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~/.cache/mrtwin</span></code> folder</p></li>
+</ol>
+</section>
+<section id="disabling-ssl-verification-not-recommended">
+<h3>Disabling SSL verification (not recommended)<a class="headerlink" href="#disabling-ssl-verification-not-recommended" title="Link to this heading">#</a></h3>
+<p>If you encounter some issue in downloading, SSL verification
+can be disabled by setting <code class="docutils literal notranslate"><span class="pre">verify</span></code> to <code class="docutils literal notranslate"><span class="pre">False</span></code> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>).
+It is advised however to solve the problem on your machine side
+(updating the certificate).</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 58.649 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-autoexamples-01-phantoms-example-cbs-neuro-py">
+<div class="binder-badge docutils container">
+<a class="reference external image-reference" href="https://mybinder.org/v2/gh/infn-mri/mrtwin/gh-pages?urlpath=lab/tree/examples/generated/autoexamples/01.Phantoms/example_cbs_neuro.ipynb"><img alt="Launch binder" src="../../../_images/binder_badge_logo.svg" style="width: 150px;" />
+</a>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/6a1e0cb9a1d935efe644f33bd579590d/example_cbs_neuro.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">example_cbs_neuro.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/9aef477853f00aa14b2db37bc6620304/example_cbs_neuro.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">example_cbs_neuro.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/a86bc7a477428662772515b9a009047b/example_cbs_neuro.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">example_cbs_neuro.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Phantom Examples</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="example_shepplogan.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Shepp-Logan Phantom</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-usage">Basic Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#caching-mechanism">Caching mechanism</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disabling-ssl-verification-not-recommended">Disabling SSL verification (not recommended)</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MRTwin Contributors
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, MRTwin Contributors.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
