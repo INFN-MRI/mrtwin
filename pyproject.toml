@@ -46,6 +46,7 @@ classifiers = [  # Optional
 dependencies = [
 "brainweb-dl",
 "phantominator",
+"osfclient",
 "numba"
 ]
 
