@@ -2,10 +2,8 @@
 
 __all__ = ["NumericOSFPhantom"]
 
-import os
 from typing import Sequence
 
-import numpy as np
 
 from .. import _classes
 
