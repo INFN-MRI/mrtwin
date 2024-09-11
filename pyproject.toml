@@ -6,7 +6,7 @@ requires = ["setuptools", "setuptools_scm[toml]", "wheel"]
 [project]
 name = "mrtwin"
 description = "Collection of virtual objects for numerical MR experiments."
-readme = "README.md"
+readme = "README.rst"
 
 requires-python = ">=3.10"
 dynamic = ["version"]
@@ -55,9 +55,9 @@ doc = ["sphinx", "pydata-sphinx-theme", "sphinx-gallery", "matplotlib"]
 # List URLs that are relevant to your project
 # This field corresponds to the "Project-URL" and "Home-Page" metadata fields:
 [project.urls]  # Optional
-"Homepage" = "https://github.com/paquiteau/brainweb-dl"
-"Bug Reports" = "https://github.com/paquiteau/brainweb-dl/issues"
-"Source" = "https://github.com/paquiteau/brainweb-dl"
+"Homepage" = "https://github.com/INFN-MRI/mrtwin"
+"Bug Reports" = "https://github.com/INFN-MRI/mrtwin/issues"
+"Source" = "https://github.com/INFN-MRI/mrtwin"
 
 [tool.setuptools.packages.find]
 where=["src"]
