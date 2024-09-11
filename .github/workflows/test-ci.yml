@@ -153,9 +153,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install .[doc]
-		  python -m pip install -r docs/requirements.txt
-      
-      - name: Build API documentation
+	  python -m pip install -r docs/requirements.txt
+
+- name: Build API documentation
         run: |
           python -m sphinx docs docs_build
       
