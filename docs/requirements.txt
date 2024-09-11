@@ -1,0 +1,3 @@
+coverage
+sphinx-copybutton
+sphinx-gallery
