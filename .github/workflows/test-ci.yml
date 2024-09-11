@@ -31,7 +31,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        python-version: ["3.12", "3.10"]
+        python-version: ["3.12", "3.9"]
 
     steps:
       - uses: actions/checkout@v3
@@ -49,3 +49,8 @@ jobs:
         shell: bash
         run: |
           pytest -n auto --cov=src --cov-report xml:coverage.xml --cov-report term-missing:skip-covered --ignore=tests/phantoms/test_brainweb.py --ignore=tests/phantoms/test_osf.py
+      - name: Upload coverage
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: INFN-MRI/mrtwin
