@@ -264,7 +264,7 @@ The path is selected according to the following hierachy (inspired by ``brainweb
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.586 seconds)
+   **Total running time of the script:** (0 minutes 1.773 seconds)
 
 
 .. _sphx_glr_download_generated_autoexamples_02.Fields_example_sensmap.py:
