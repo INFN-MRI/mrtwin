@@ -17,6 +17,7 @@ tmp/
 *.py[cod]
 *.egg
 *.nbi
+*.nbc
 
 docs/generated/
 docs_build/
