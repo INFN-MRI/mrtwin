@@ -9,19 +9,18 @@ This examples show how to generate a static field (i.e., B0)
 map starting from the object susceptibility distribution.
 
 
-The static field is written as:
+The static field is written as the following convolution (performed as a pointwise multiplication in the Fourier space):
 
-\[
-\Delta \mathbf{B}(\mathbf{r}) = \mathbf{B_0} \cdot \chi(\mathbf{r}) * G(\mathbf{r})
-\]
+.. math::
+    
+    \mathbf{B}(\mathbf{r}) = \mathbf{B_0} \cdot \mathcal{F}^{-1} \left[ \chi(\mathbf{k}) \cdot D(\mathbf{k}) \right]
+    
+where :math:`\chi(\mathbf{k})` is the Fourier transform of susceptibility spatial distribution and
+:math:`D(\mathbf{k})` is the dipole kernel defined by:
+    
+.. math ::
 
-where \(*\) denotes the 2D/3D convolution operation, and \(G(\mathbf{r})\) is the dipole kernel defined by:
-
-\[
-G(\mathbf{r}) = \frac{3(\mathbf{r} \cdot \mathbf{B_0})\mathbf{r}}{|\mathbf{r}|^5} - \frac{\mathbf{B_0}}{|\mathbf{r}|^3}
-\]
-
-Convolution is performed as a pointwise multiplication in the Fourier space. 
+    D(\mathbf{r}) = \left(\frac{1}{3} - \frac{k^2_z}{\lvert \textbf{k} \rvert}\right)
 
 """
 
@@ -79,7 +78,7 @@ plt.show()
 # The static field map calculated by
 # default for a field strength of 1.5 T.
 #
-# This can be changed via the `B0` argument:
+# This can be changed via the ``B0`` argument:
 
 # B0 strengths
 B0 = [0.55, 1.5, 3.0, 7.0, 11.7, 13.3]  # field strengths in [T]
@@ -98,7 +97,7 @@ plt.show()
 
 # %%
 # As an alternative, we can force a specific
-# B0 offset range using the `b0range` argument as:
+# B0 offset range using the ``b0range`` argument as:
 
 b0map = b0field(chi, b0range=(-500, 500))
 

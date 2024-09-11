@@ -71,7 +71,7 @@ def shepplogan_phantom(
     >>> from mrtwin import shepplogan_phantom
 
     We can generate a dense single slice 2D phantom with a matrix size
-    of `(200, 200)` as:
+    of ``(200, 200)`` as:
 
     >>> phantom = shepplogan_phantom(ndim=2, shape=200, segtype=False)
 

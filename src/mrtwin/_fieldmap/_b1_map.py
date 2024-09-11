@@ -105,7 +105,7 @@ def b1field(
     >>> b1map7T = b1field((128, 128), b1range=(0.5, 2.0), coil_width=1.1)
 
     Multiple orthogonal modes can be simulated by ``nmodes`` argument.
-    For example, ``CP`` mode and ``gradient`` mode can be obtained as:
+    For example, `CP` mode and `gradient` mode can be obtained as:
 
     >>> b1map = b1field((128, 128), nmodes=2) # b1map[0] is CP, b1map[1] is gradient mode.
 

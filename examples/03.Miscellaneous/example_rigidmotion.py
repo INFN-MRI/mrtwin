@@ -20,7 +20,7 @@ from mrtwin import rigid_motion
 # ===========
 #
 # Two- and three-dimensional rigid motion patterns
-# can be generated as follows, using `nframes` to
+# can be generated as follows, using ``nframes`` to
 # specify the number of motion states:
 
 theta, dy2D, dx2D = rigid_motion(2, 200 * 200)
@@ -42,8 +42,8 @@ ax1[1, 1].plot(np.stack((dz3D, dy3D, dx3D), axis=1), "."), ax1[1, 1].set(
 plt.show()
 
 # %%
-# For reproducibility, the seed for random pattern generation is set to `42`.
-# This can be changed via the `seed` argument:
+# For reproducibility, the seed for random pattern generation is set to ``42``.
+# This can be changed via the ``seed`` argument:
 
 theta1, dy1, dx1 = rigid_motion(2, 200 * 200, seed=10)
 theta2, dy2, dx2 = rigid_motion(2, 200 * 200, seed=20)

@@ -11,7 +11,7 @@ import numba as nb
 
 
 def rigid_motion(
-    ndims: int,
+    ndim: int,
     nframes: int,
     degree: str | Sequence[float] = "moderate",
     seed: int = 42,
@@ -21,7 +21,7 @@ def rigid_motion(
 
     Parameters
     ----------
-    ndims : int
+    ndim : int
         Generate 2D (in-plane only) or 3D motion pattern.
     nframes : int
         Number of motion frames.
@@ -50,7 +50,7 @@ def rigid_motion(
     tuple[np.ndarray]
         Motion parameters. The number of outputs depend on the value of ``ndims``.
 
-        For ``ndims == 2``:
+        For ``ndim == 2``:
 
         * angleZ : tnp.ndarray
             Rotation about ``z`` axis in ``[deg]`` of shape ``(nframes,)``.
@@ -59,7 +59,7 @@ def rigid_motion(
         * dx : np.ndarray
             Translation towards ``x`` axis in ``[mm]`` of shape ``(nframes,)``.
 
-        For ``ndims == 3``:
+        For ``ndim == 3``:
 
         * angleX : np.ndarray
             Rotation about ``x`` axis in ``[deg]`` of shape ``(nframes,)``.
@@ -81,7 +81,7 @@ def rigid_motion(
 
     We can generate a 6-degree rigid motion pattern for 1000 motion states as:
 
-    >>> roll, pitch, yaw, dz, dy, dx = rigid_motion(ndims=3, nframes=1000)
+    >>> roll, pitch, yaw, dz, dy, dx = rigid_motion(ndim=3, nframes=1000)
 
     """
     # Markov rate (I don't remember what this is :()
@@ -122,12 +122,12 @@ def rigid_motion(
     dy = degree[1] * x[4]  # mm, translation around x
     dz = degree[1] * x[5]  # mm, translation around x
 
-    if ndims == 2:
+    if ndim == 2:
         return yaw, dy, dx
-    elif ndims == 3:
+    elif ndim == 3:
         return roll, pitch, yaw, dz, dy, dx
     else:
-        raise ValueError(f"Invalid number of dims! must be 2 or 3 - found {ndims}")
+        raise ValueError(f"Invalid number of dims! must be 2 or 3 - found {ndim}")
 
 
 # %% local utils

@@ -107,8 +107,8 @@ def brainweb_phantom(
     >>> from mrtwin import brainweb_phantom
 
     We can generate a dense single slice 2D phantom with a matrix size
-    of `(200, 200)` at `1.085` mm isotropic resolution for the
-    brainweb subject `n=4` as:
+    of ``(200, 200)`` at 1.085 mm isotropic resolution for the
+    brainweb subject ``n=4`` as:
 
     >>> phantom = brainweb_phantom(ndim=2, subject=4, segtype=False)
 

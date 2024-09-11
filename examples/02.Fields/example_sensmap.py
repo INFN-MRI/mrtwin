@@ -22,8 +22,8 @@ plt.rcParams["image.cmap"] = "gray"
 # ===========
 #
 # Two- and three-dimensional coil sensitivity maps
-# can be generated providing `(nc, ny, nx)` and
-# `(nc, nz, ny, nx)` shaped tuple as a `shape` argument
+# can be generated providing ``(nc, ny, nx)`` and
+# ``(nc, nz, ny, nx)`` shaped tuple as a ``shape`` argument
 # to `sensmap` routine, respectively:
 
 smap2D = sensmap(shape=(8, 200, 200))  # 8 channels; (200, 200) matrix
@@ -46,10 +46,10 @@ plt.show()
 #
 # The sensitivity maps can be altered by modifying several parameters:
 #
-# 1. coil width (with respect to FOV)
-# 2. shift: displacement of the center (in units of voxels)
-# 3. dphi: bulk rotation of the coil (in [deg])
-# 4. nrings: number of rings for a cylindrical hardware setup
+# 1. ``coil_width``: width of the coil (with respect to FOV).
+# 2. ``shift``: displacement of the center (in units of voxels).
+# 3. ``dphi``: bulk rotation of the coil (in [deg]).
+# 4. ``nrings``: number of rings for a cylindrical hardware setup.
 #
 # Without loss of generality, we show examples for 2D sensitivities:
 
@@ -118,16 +118,16 @@ plt.show()
 # Caching mechanism
 # =================
 #
-# To reduce loading times, `mrtwin` implements a caching mechanism.
+# To reduce loading times, ``mrtwin`` implements a caching mechanism.
 #
-# If `cache` argument is set to `True` (default behaviour for `ndim=3`), each sensitivity map
+# If ``cache`` argument is set to ``True`` (default behaviour for ``ndim=3``), each sensitivity map
 # segmentation (identified by the number of channels,
 # matrix size, shift, rotation angle and number of rings)
 # is saved on the disk in `npy` format.
 #
-# The path is selected according to the following hierachy (inspired by `brainweb-dl`):
+# The path is selected according to the following hierachy (inspired by ``brainweb-dl``):
 #
-# 1. User-specific argument (`cache_dir`)
-# 2. `MRTWIN_DIR` environment variable
-# 3. `~/.cache/mrtwin` folder
+# 1. User-specific argument (``cache_dir``)
+# 2. ``MRTWIN_DIR`` environment variable
+# 3. ``~/.cache/mrtwin`` folder
 #

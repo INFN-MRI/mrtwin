@@ -22,8 +22,8 @@ plt.rcParams["image.cmap"] = "hot"
 # ===========
 #
 # Two- and three-dimensional transmit field maps
-# can be generated providing `(ny, nx)` and
-# `(nz, ny, nx)` shaped tuple as a `shape` argument
+# can be generated providing ``(ny, nx)`` and
+# ``(nz, ny, nx)`` shaped tuple as a ``shape`` argument
 # to `b1field` routine, respectively:
 
 b1map2D = b1field(shape=(200, 200))  # (200, 200) matrix
@@ -44,7 +44,7 @@ plt.show()
 # with a relative flip angle variation
 # between 0.8 and 1.2 (e.g., 3T systems).
 #
-# This can be changed via the `b1range` argument:
+# This can be changed via the ``b1range`` argument:
 
 b1map2D = b1field(shape=(200, 200), b1range=(0.5, 2.0))
 
@@ -76,11 +76,11 @@ plt.show()
 #
 # The sensitivity maps can be altered by modifying several parameters:
 #
-# 1. coil width (with respect to FOV)
-# 2. shift: displacement of the center (in units of voxels)
-# 3. dphi: bulk rotation of the coil (in [deg])
-# 4. ncoils: number of transmit channels in the transmit array
-# 5. nrings: number of rings for a cylindrical hardware setup
+# 1. ``coil_width``: width of the coil (with respect to FOV).
+# 2. ``shift``: displacement of the center (in units of voxels).
+# 3. ``dphi``: bulk rotation of the coil (in [deg]).
+# 4. ``ncoils``: number of transmit channels in the transmit array.
+# 5. ``nrings``: number of rings for a cylindrical hardware setup.
 #
 # Without loss of generality, we show examples for 2D sensitivities:
 
@@ -167,14 +167,14 @@ plt.show()
 # By default, the sensitivities from each transmit channel are combined
 # in quadrature mode.
 #
-# With `mrtwin`, multiple orthogonal modes can be simulated by ``nmodes`` argument.
-# For example, ``CP`` mode and ``gradient`` modes (e.g., for static pTx)  can be obtained as:
+# With ``mrtwin``, multiple orthogonal modes can be simulated by ``nmodes`` argument.
+# For example, `CP` mode and `gradient` modes (e.g., for static pTx)  can be obtained as:
 
 b1map = b1field((200, 200), nmodes=2)  # b1map[0] is CP, b1map[1] is gradient mode.
 
 # %%
 #
-# In this case, b1map will be a `(nmodes, *shape)` `np.ndarray`, the different
+# In this case, b1map will be a ``(nmodes, *shape)`` ``np.ndarray``, the different
 # modes being stacked along the first axis:
 
 fig, ax = plt.subplots(2, 2)
@@ -196,22 +196,19 @@ fig.colorbar(im3, ax=ax[1, 1], fraction=0.046, pad=0.04)
 plt.show()
 
 # %%
-#
-# Multiple modes maps
-# %%
 # Caching mechanism
 # =================
 #
-# To reduce loading times, `mrtwin` implements a caching mechanism.
+# To reduce loading times, ``mrtwin`` implements a caching mechanism.
 #
-# If `cache` argument is set to `True` (default behaviour for `ndim=3`), each transmit field map
+# If ``cache`` argument is set to ``True`` (default behaviour for ``ndim=3``), each transmit field map
 # segmentation (identified by the number of channels, number of modes,
 # matrix size, shift, rotation angle, number of rings, b1 range and masking flag)
-# is saved on the disk in `npy` format.
+# is saved on the disk in ``npy`` format.
 #
-# The path is selected according to the following hierachy (inspired by `brainweb-dl`):
+# The path is selected according to the following hierachy (inspired by ``brainweb-dl``):
 #
-# 1. User-specific argument (`cache_dir`)
-# 2. `MRTWIN_DIR` environment variable
-# 3. `~/.cache/mrtwin` folder
+# 1. User-specific argument (``cache_dir``)
+# 2. ``MRTWIN_DIR`` environment variable
+# 3. ``~/.cache/mrtwin`` folder
 #

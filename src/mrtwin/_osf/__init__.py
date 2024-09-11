@@ -68,8 +68,8 @@ def osf_phantom(
     >>> from mrtwin import osf_phantom
 
     We can generate a dense single slice 2D phantom with a matrix size
-    of `(256, 256)` at `1.0625` mm isotropic resolution for the
-    OSF subject `n=1` as:
+    of ``(256, 256)`` at 1.0625 mm isotropic resolution for the
+    OSF subject ``n=1`` as:
 
     >>> phantom = osf_phantom(ndim=2, subject=1)
 

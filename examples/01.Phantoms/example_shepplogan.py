@@ -24,13 +24,13 @@ phantom2D = shepplogan_phantom(ndim=2, shape=200)  # 2D phantom
 phantom3D = shepplogan_phantom(ndim=3, shape=200)  # 3D phantom
 
 # %%
-# where `shape` is a matrix size, which can be provided as a scalar (isotropic matrix)
-# or a 'len(ndim)` tuple.
+# where ``shape`` is a matrix size, which can be provided as a scalar (isotropic matrix)
+# or a ``ndim``-length tuple.
 #
 # The phantoms here created are sparse, i.e., they consists of an integer
-# `(*spatial_shape)` shaped `np.ndarray` whose values represent the label
+# ``(*spatial_shape)`` shaped ``np.ndarray`` whose values represent the label
 # (i.e., the index) identifying each tissue type (e.g., Gray Matter, White Matter, CSF)
-# and a list of `(nclasses,)` dictionaries each containing the `(M0, T1, T2, T2*, Chi)`
+# and a list of ``(nclasses,)`` dictionaries each containing the ``(M0, T1, T2, T2*, Chi)``
 # values for each class:
 
 example2D = np.concatenate((phantom2D, phantom2D, phantom2D), axis=0)
@@ -59,7 +59,7 @@ ax1[1].imshow(example3D, cmap="turbo"), ax1[1].axis("off"), ax1[1].set_title(
 plt.show()
 
 # %%
-# The `(M0, T1, T2, T2*, Chi)` properties
+# The ``(M0, T1, T2, T2*, Chi)`` properties
 # can be direcly accessed as:
 
 _, _ = print("M0:", end="\t"), print(phantom2D.M0)  # same for phantom3D
@@ -69,19 +69,19 @@ _, _ = print("T2* (ms):", end="\t"), print(phantom2D.T2s)
 _, _ = print("Chi:", end="\t"), print(phantom2D.Chi)
 
 # %%
-# If required, the `properties` dictionary
+# If required, the ``properties`` dictionary
 # can be directly accessed as:
 
 print(phantom2D.properties)
 
 # %%
-# e.g., to be passed as `**kwargs` to a simulator routine.
+# e.g., to be passed as ``**kwargs`` to a simulator routine.
 #
 # Notice that segmentation can be accessed directly (in read-only mode)
 # via square bracked indexing, similarly to numpy arrays.
 #
 # A basic summary of the properties can be accessed
-# via the `__repr__` attribute (i.e., enabling pretty printing):
+# via the ``__repr__`` attribute (i.e., enabling pretty printing):
 
 print(phantom2D)
 print(phantom3D)
@@ -89,7 +89,7 @@ print(phantom3D)
 # %%
 # We can obtain a "dense" phantom,
 # i.e., an object without segmentation whose
-# `(M0, T1, T2, T2*, Chi)` properties are stored
+# ``(M0, T1, T2, T2*, Chi)`` properties are stored
 # as parametric maps rather than the individual values
 # of each tissue class as:
 
@@ -145,7 +145,7 @@ print(phantom2D)
 # The physical parameter of each tissue class are calculated by
 # default for a field strength of 1.5 T.
 #
-# This can be changed via the `B0` argument:
+# This can be changed via the ``B0`` argument:
 
 # B0 strengths
 B0 = [0.55, 1.5, 3.0, 7.0, 11.7, 13.3]  # field strengths in [T]
@@ -182,20 +182,20 @@ plt.show()
 #
 # In addition to single pool model, we provide 3 multi-pool models:
 #
-# 1. `"mw-model"`: a two-pool model where free water is divided in two compartments,
+# 1. ``"mw-model"``: a two-pool model where free water is divided in two compartments,
 #    i.e., `intra-/extra-cellular water` (long T1 / T2) and `myelin water` (short T1 / T2).
 #    The model include chemical exchange between the two pools.
-#    Parameters are `(MWF, T1, T2, k, chemshift)`.
-# 2. `"mt-model"`: a two-pool model consisting in free water + bound water.
-#    Free water includes both intra-/extra-cellular and free water (as in the single-pool model),
+#    Parameters are ``(MWF, T1, T2, k, chemshift)``.
+# 2. ``"mt-model"``: a two-pool model consisting in `free water` and `bound water.`
+#    Free water includes both intra-/extra-cellular and myelin water (as in the single-pool model),
 #    while bound water corresponds to a macromolecular pool with the same T1 as the free water
 #    and no T2 (i.e., no transverse magnetization).
 #    The model include magnetization transfer between the two pools.
-#    Parameters are `(MVF, T1, T2, k)`.
-# 3. `"mwmt-model"`: a three-pool model consisting in intra-/extra-cellular water + myelin water + bound water.
+#    Parameters are ``(MVF, T1, T2, k)``.
+# 3. ``"mwmt-model"``: a three-pool model consisting in `intra-/extra-cellular water`, `myelin water` and `bound water`.
 #    The model include chemical exchange between the two free water pools and magnetizion transfer between
 #    myelin water and bound water.
-#    Parameters are `(MWF, MVF, T1, T2, k)`.
+#    Parameters are ``(MWF, MVF, T1, T2, k)``.
 #
 # Here we will display the latter, as it represents the most general case.
 
@@ -205,7 +205,7 @@ phantom_multi = shepplogan_phantom(ndim=2, shape=200, model="mwmt-model", segtyp
 # %%
 #
 # MWF corresponds to the myelin water fraction, while MVF to the bound water fraction.
-# We assume that intra-extracellular water fraction `= 1 - (MWF + MVF)`:
+# We assume that intra-extracellular water fraction ``= 1 - (MWF + MVF)``:
 
 MWF = phantom_multi.MWF
 MVF = phantom_multi.MVF
@@ -221,8 +221,8 @@ plt.show()
 # %%
 #
 # T1 and T2 for the two free water pools are stacked along the first axis,
-# with `n=0` being the `intra-/extra-cellular water` (long T1 / T2) and
-# `n=1` being the `myelin water` (short T1 / T2):
+# with ``n=0`` being the intra-/extra-cellular water (long T1 / T2) and
+# ``n=1`` being the myelin water (short T1 / T2):
 
 T1 = np.concatenate((phantom_multi.T1[0], phantom_multi.T1[1]), axis=1)
 T2 = np.concatenate((phantom_multi.T2[0], phantom_multi.T2[1]), axis=1)
@@ -241,8 +241,8 @@ fig6.colorbar(im2, ax=ax6[1], fraction=0.046, pad=0.04)
 # %%
 #
 # k represent the non-directional exchange rates in [Hz],
-# with `n=0` being the chemical exchange rate between the two free water pools
-# and `n=1` being magnetization transfer rate between the myelin and bound water:
+# with ``n=0`` being the chemical exchange rate between the two free water pools
+# and ``n=1`` being magnetization transfer rate between the myelin and bound water:
 
 k = np.concatenate((phantom_multi.k[0], phantom_multi.k[1]), axis=1)
 
@@ -254,21 +254,21 @@ plt.show()
 
 # %%
 #
-# Similarly to the single pool model, `mrtwin` also supports a sparse (`segtype="crisp"`) representation.
+# Similarly to the single pool model, ``mrtwin`` also supports a sparse (``segtype="crisp"``) representation.
 #
 # Caching mechanism
 # =================
 #
-# To reduce loading times, `mrtwin` implements a caching mechanism.
+# To reduce loading times, ``mrtwin`` implements a caching mechanism.
 #
-# If `cache` argument is set to `True` (default behaviour for `ndim=3`), each phantom
+# If ``cache`` argument is set to ``True`` (default behaviour for ``ndim=3``), each phantom
 # segmentation (identified by the number of spatial dimensions,
 # tissue model, segmentation type and matrix shape)
-# is saved on the disk in `npy` format.
+# is saved on the disk in ``npy`` format.
 #
-# The path is selected according to the following hierachy (inspired by `brainweb-dl`):
+# The path is selected according to the following hierachy (inspired by ``brainweb-dl``):
 #
-# 1. User-specific argument (`cache_dir`)
-# 2. `MRTWIN_DIR` environment variable
-# 3. `~/.cache/mrtwin` folder
+# 1. User-specific argument (``cache_dir``)
+# 2. ``MRTWIN_DIR`` environment variable
+# 3. ``~/.cache/mrtwin`` folder
 #
