@@ -53,8 +53,8 @@ jobs:
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: coverage_${{ matrix.python-version }}
-          path: coverage_${{ matrix.backend }}
+          name: coverage_${{ matrix.python-version }}.xml
+          path: coverage_${{ matrix.backend }}.xml
           
   get-commit-message:
     runs-on: ubuntu-latest
