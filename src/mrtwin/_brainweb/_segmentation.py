@@ -88,15 +88,18 @@ def _request_get_brainweb(
     )
 
     # download
-    with io.BytesIO() as buffer, tqdm(
-        total=float(d.headers.get("Content-length", 0)),
-        desc=f"Downloading {download_command}",
-        unit="B",
-        unit_scale=True,
-        unit_divisor=1024,
-        leave=False,
-        position=2,
-    ) as pbar:
+    with (
+        io.BytesIO() as buffer,
+        tqdm(
+            total=float(d.headers.get("Content-length", 0)),
+            desc=f"Downloading {download_command}",
+            unit="B",
+            unit_scale=True,
+            unit_divisor=1024,
+            leave=False,
+            position=2,
+        ) as pbar,
+    ):
         for chunk in d.iter_content(chunk_size=1024):
             buffer.write(chunk)
             pbar.update(len(chunk))
