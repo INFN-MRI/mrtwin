@@ -153,7 +153,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install .[doc]
-          python -m pip install finufft
+          python -m pip install coverage
       
       - name: Build API documentation
         run: |
