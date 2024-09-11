@@ -133,7 +133,7 @@ jobs:
     name: Build API Documentation
     runs-on: ubuntu-latest
     needs: get-commit-message
-    if: ${{ contains(needs.get-commit-message.outputs.message, '!docs_build') || github.ref == 'refs/heads/master' }}
+    if: ${{ contains(needs.get-commit-message.outputs.message, '!docs_build') || github.ref == 'refs/heads/main' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -175,7 +175,7 @@ jobs:
   CompileDocs:
     name: Compile the coverage badge in docs
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/master' }}
+    if: ${{ github.ref == 'refs/heads/main' }}
     needs: [BuildDocs, coverage]
     steps:
       - name: Get the docs_build artifact
