@@ -111,14 +111,14 @@ Given these parameters, GIRF can be computed as
  .. code-block:: none
 
 
-    ([<matplotlib.lines.Line2D object at 0x7f7a5fc973d0>, <matplotlib.lines.Line2D object at 0x7f7a5fc97490>, <matplotlib.lines.Line2D object at 0x7f7a5fc950f0>], (-10.0, 10.0), (-0.5, 0.5), [Text(0.5, 23.52222222222222, 'frequency [kHz]'), Text(31.222222222222214, 0.5, 'GIRF phase [rad]')])
+    ([<matplotlib.lines.Line2D object at 0x7f3dc0bf8fa0>, <matplotlib.lines.Line2D object at 0x7f3dc0bf9f30>, <matplotlib.lines.Line2D object at 0x7f3dc0bfb970>], (-10.0, 10.0), (-0.5, 0.5), [Text(0.5, 23.52222222222222, 'frequency [kHz]'), Text(31.222222222222214, 0.5, 'GIRF phase [rad]')])
 
 
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.184 seconds)
+   **Total running time of the script:** (0 minutes 0.180 seconds)
 
 
 .. _sphx_glr_download_generated_autoexamples_03.Miscellaneous_example_girf.py:
