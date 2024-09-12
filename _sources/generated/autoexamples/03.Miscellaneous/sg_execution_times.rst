@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:04.236** total execution time for 2 files **from generated/autoexamples/03.Miscellaneous**:
+**00:04.344** total execution time for 2 files **from generated/autoexamples/03.Miscellaneous**:
 
 .. container::
 
@@ -33,8 +33,8 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_generated_autoexamples_03.Miscellaneous_example_rigidmotion.py` (``example_rigidmotion.py``)
-     - 00:04.058
+     - 00:04.162
      - 0.0
    * - :ref:`sphx_glr_generated_autoexamples_03.Miscellaneous_example_girf.py` (``example_girf.py``)
-     - 00:00.178
+     - 00:00.182
      - 0.0
