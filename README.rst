@@ -28,7 +28,7 @@ MRTwin is a collection of virtual objects for numerical MR experiments.
 
 .. |Black| image:: https://img.shields.io/badge/style-black-black
 
-.. |PythonVersion| image:: https://img.shields.io/badge/Python-%3E=3.9-blue?logo=python&logoColor=white
+.. |PythonVersion| image:: https://img.shields.io/badge/Python-%3E=3.10-blue?logo=python&logoColor=white
    :target: https://python.org
 
 Features
