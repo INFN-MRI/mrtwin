@@ -297,7 +297,7 @@ It is advised however to solve the problem on your machine side
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.967 seconds)
+   **Total running time of the script:** (0 minutes 0.678 seconds)
 
 
 .. _sphx_glr_download_generated_autoexamples_01.Phantoms_example_cbs_neuro.py:
