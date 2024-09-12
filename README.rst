@@ -5,19 +5,27 @@ MRTwin is a collection of virtual objects for numerical MR experiments.
 
 .. image:: https://infn-mri.github.io/mrtwin/_static/coverage_badge.svg
    :target: https://infn-mri.github.io/mrtwin
+
 .. image:: https://github.com/INFN-MRI/mrtwin/workflows/CI/badge.svg
    :target: https://github.com/INFN-MRI/mrtwin
+
 .. image:: https://github.com/INFN-MRI/mrtwin/workflows/CD/badge.svg
    :target: https://github.com/INFN-MRI/mrtwin
+
 .. image:: https://img.shields.io/github/license/INFN-MRI/mrtwin
    :target: https://github.com/INFN-MRI/mrtwin/blob/main/LICENSE.txt
+
 .. image:: https://www.codefactor.io/repository/github/INFN-MRI/mrtwin/badge
    :target: https://www.codefactor.io/repository/github/INFN-MRI/mrtwin
+
 .. image:: https://img.shields.io/badge/docs-Sphinx-blue
    :target: https://infn-mri.github.io/mrtwin
+
 .. image:: https://img.shields.io/pypi/v/mrtwin
    :target: https://pypi.org/project/mrtwin
+
 .. image:: https://img.shields.io/badge/style-black-black
+
 .. image:: https://img.shields.io/badge/Python-%3E=3.9-blue?logo=python&logoColor=white
    :target: https://python.org
    :alt: Made with Python
