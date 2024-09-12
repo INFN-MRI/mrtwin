@@ -4,7 +4,7 @@ MRTwin
 MRTwin is a collection of virtual objects for numerical MR experiments.
 
 .. list-table::
-   :widths: 10 10 10 10 10 10 10 10 10
+   :widths: 25 25 25 25 25 25 25 25 25
    :header-rows: 0
 
    * - .. image:: https://infn-mri.github.io/mrtwin/_static/coverage_badge.svg
