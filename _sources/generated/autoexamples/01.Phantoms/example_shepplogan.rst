@@ -496,7 +496,7 @@ with ``n=0`` being the intra-/extra-cellular water (long T1 / T2) and
  .. code-block:: none
 
 
-    <matplotlib.colorbar.Colorbar object at 0x7fd02c95da50>
+    <matplotlib.colorbar.Colorbar object at 0x7f3a0128fc70>
 
 
 
@@ -555,7 +555,7 @@ The path is selected according to the following hierachy (inspired by ``brainweb
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 4.358 seconds)
+   **Total running time of the script:** (0 minutes 4.475 seconds)
 
 
 .. _sphx_glr_download_generated_autoexamples_01.Phantoms_example_shepplogan.py:
