@@ -227,7 +227,7 @@ B0 offset range using the ``b0range`` argument as:
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 3.334 seconds)
+   **Total running time of the script:** (0 minutes 3.516 seconds)
 
 
 .. _sphx_glr_download_generated_autoexamples_02.Fields_example_staticfield.py:

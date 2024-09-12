@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**03:48.514** total execution time for 3 files **from generated/autoexamples/01.Phantoms**:
+**03:49.947** total execution time for 3 files **from generated/autoexamples/01.Phantoms**:
 
 .. container::
 
@@ -33,11 +33,11 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_generated_autoexamples_01.Phantoms_example_cbs_neuro.py` (``example_cbs_neuro.py``)
-     - 02:13.641
+     - 02:12.673
      - 0.0
    * - :ref:`sphx_glr_generated_autoexamples_01.Phantoms_example_brainweb.py` (``example_brainweb.py``)
-     - 01:30.719
+     - 01:32.954
      - 0.0
    * - :ref:`sphx_glr_generated_autoexamples_01.Phantoms_example_shepplogan.py` (``example_shepplogan.py``)
-     - 00:04.155
+     - 00:04.320
      - 0.0
