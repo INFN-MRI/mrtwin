@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:17.183** total execution time for 8 files **from all galleries**:
+**00:15.631** total execution time for 8 files **from all galleries**:
 
 .. container::
 
@@ -32,27 +32,27 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_generated_autoexamples_01.Phantoms_example_shepplogan.py` (``../examples/01.Phantoms/example_shepplogan.py``)
-     - 00:04.475
-     - 0.0
    * - :ref:`sphx_glr_generated_autoexamples_03.Miscellaneous_example_rigidmotion.py` (``../examples/03.Miscellaneous/example_rigidmotion.py``)
-     - 00:04.353
+     - 00:04.102
+     - 0.0
+   * - :ref:`sphx_glr_generated_autoexamples_01.Phantoms_example_shepplogan.py` (``../examples/01.Phantoms/example_shepplogan.py``)
+     - 00:03.935
      - 0.0
    * - :ref:`sphx_glr_generated_autoexamples_02.Fields_example_staticfield.py` (``../examples/02.Fields/example_staticfield.py``)
-     - 00:03.769
+     - 00:03.345
      - 0.0
    * - :ref:`sphx_glr_generated_autoexamples_01.Phantoms_example_brainweb.py` (``../examples/01.Phantoms/example_brainweb.py``)
-     - 00:01.557
+     - 00:01.429
      - 0.0
    * - :ref:`sphx_glr_generated_autoexamples_02.Fields_example_transmitfield.py` (``../examples/02.Fields/example_transmitfield.py``)
-     - 00:01.490
+     - 00:01.349
      - 0.0
    * - :ref:`sphx_glr_generated_autoexamples_01.Phantoms_example_cbs_neuro.py` (``../examples/01.Phantoms/example_cbs_neuro.py``)
-     - 00:00.714
+     - 00:00.691
      - 0.0
    * - :ref:`sphx_glr_generated_autoexamples_02.Fields_example_sensmap.py` (``../examples/02.Fields/example_sensmap.py``)
-     - 00:00.633
+     - 00:00.599
      - 0.0
    * - :ref:`sphx_glr_generated_autoexamples_03.Miscellaneous_example_girf.py` (``../examples/03.Miscellaneous/example_girf.py``)
-     - 00:00.192
+     - 00:00.181
      - 0.0
