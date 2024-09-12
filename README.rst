@@ -91,8 +91,8 @@ If you are interested in improving this project, install MRTwin in editable mode
 
 .. code-block:: bash
 
-    git clone git@github.com:paquiteau/brainweb-dl 
-    cd brainweb-dl
+    git clone git@github.com:INFN-MRI/mrtwin
+    cd mrtwin
     pip install -e .[dev,test,doc]
 
 
