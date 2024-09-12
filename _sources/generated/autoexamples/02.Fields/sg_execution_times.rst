@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:05.636** total execution time for 3 files **from generated/autoexamples/02.Fields**:
+**00:05.684** total execution time for 3 files **from generated/autoexamples/02.Fields**:
 
 .. container::
 
@@ -33,11 +33,11 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_generated_autoexamples_02.Fields_example_staticfield.py` (``example_staticfield.py``)
-     - 00:03.610
+     - 00:03.653
      - 0.0
    * - :ref:`sphx_glr_generated_autoexamples_02.Fields_example_transmitfield.py` (``example_transmitfield.py``)
-     - 00:01.398
+     - 00:01.406
      - 0.0
    * - :ref:`sphx_glr_generated_autoexamples_02.Fields_example_sensmap.py` (``example_sensmap.py``)
-     - 00:00.628
+     - 00:00.624
      - 0.0
