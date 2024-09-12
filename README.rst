@@ -16,6 +16,7 @@ MRTwin is a collection of virtual objects for numerical MR experiments.
    :target: https://www.codefactor.io/repository/github/INFN-MRI/mrtwin
 
 .. image:: https://img.shields.io/badge/docs-Sphinx-blue
+   :target: https://www.codefactor.io/repository/github/INFN-MRI/mrtwin
 
 .. image:: https://img.shields.io/pypi/v/mrtwin
    :target: https://pypi.org/project/mrtwin
