@@ -76,8 +76,8 @@ as:
     import numpy as np 
 
     TE = 10.0 # ms
-    rate_map = phantom.T2s + 1j * 2 * np.pi * b0_map
-    gre = smaps * phantom.M0 * np.exp(-rate_map * TE)
+    rate_map = (1 / phantom.T2s * 1e-3) + 1j * 2 * np.pi * b0_map
+    gre = smaps * phantom.M0 * np.exp(-rate_map * TE * 1e-3)
 
 This can be coupled with other libraries (e.g., `MRI-NUFFT <https://github.com/mind-inria/mri-nufft>`_)
 to simulate more complex MR sequences (e.g., Non-Cartesian and sub-Nyquist imaging).
