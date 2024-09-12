@@ -658,7 +658,7 @@ with ``n=0`` being the intra-/extra-cellular water (long T1 / T2) and
  .. code-block:: none
 
 
-    <matplotlib.colorbar.Colorbar object at 0x7f9f7bd52f20>
+    <matplotlib.colorbar.Colorbar object at 0x7fbac1eb2e60>
 
 
 
@@ -739,7 +739,7 @@ It is advised however to solve the problem on your machine side
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.429 seconds)
+   **Total running time of the script:** (0 minutes 1.487 seconds)
 
 
 .. _sphx_glr_download_generated_autoexamples_01.Phantoms_example_brainweb.py:
